@@ -4,6 +4,9 @@ import {
 import {
     Segment
 } from "./Segment.js";
+import {
+    IsThereSegmentAt
+} from "../../utils.js";
 
 export class Snake {
     /**
@@ -23,7 +26,7 @@ export class Snake {
         this.coordinateY = coordinateY;
         this.color = color;
 
-        this.head = new Segment(this.context, this.terrain, this.coordinateX, this.coordinateY, this.color);
+        this.head = new Segment(this.context, this.coordinateX, this.coordinateY, this.color);
         this.segments = new Array;
         this.segments.push(this.head);
         this.segments[0].DrawSegment();
@@ -35,7 +38,7 @@ export class Snake {
             // console.log(index);
             let moveIndex = 20 * -index;
             // console.log(moveIndex);
-            let segment = new Segment(this.context, this.terrain, this.coordinateX, this.coordinateY + (moveIndex), "#ffe01B")
+            let segment = new Segment(this.context, this.coordinateX, this.coordinateY + (moveIndex), "#ffe01B")
             this.segments.push(segment);
             this.segments[i+1].DrawSegment();
         }
@@ -60,103 +63,52 @@ export class Snake {
         })
     }
 
+    MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
+        if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
+            return;
+        } else {
+            for (let i = this.segments.length - 1; i >= 0; i--) {
+                if (i === 0) {
+                    if (this.segments.length === 1) {
+                        this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
+                    }
+                    this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
+                } else {
+                    let newCoordinateX = this.segments[i-1].coordinateX;
+                    let newCoordinateY = this.segments[i-1].coordinateY;
+
+                    if (i === this.segments.length - 1) {
+                        this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
+                    }
+                    this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
+                }
+            }
+        }
+    }
+
     MoveSnake(direction) {
+        let newHeadCoordinateX = 0;
+        let newHeadCoordinateY = 0;
         switch (direction) {
             case 0:
-                for (let i = this.segments.length - 1; i >= 0; i--) {
-                    if (i === 0) {
-                        let newCoordinateX = this.segments[i].coordinateX;
-                        let newCoordinateY = this.segments[i].coordinateY - CELL_SIZE;
-
-                        if (this.segments.length === 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    } else {
-                        // console.log(i);
-                        // console.log(this.segments[i], this.segments[i-1]);
-                        let newCoordinateX = this.segments[i-1].coordinateX;
-                        let newCoordinateY = this.segments[i-1].coordinateY;
-                        // console.log("NEW" + newCoordinateX + "; " + newCoordinateY);
-                        if (i === this.segments.length - 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    }
-                }
+                newHeadCoordinateX = this.segments[0].coordinateX;
+                newHeadCoordinateY = this.segments[0].coordinateY - CELL_SIZE;
+                this.MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY);
                 break;
             case 1:
-                for (let i = this.segments.length - 1; i >= 0; i--) {
-                    if (i === 0) {
-                        let newCoordinateX = this.segments[i].coordinateX;
-                        let newCoordinateY = this.segments[i].coordinateY + CELL_SIZE;
-
-                        if (this.segments.length === 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    } else {
-                        // console.log(i);
-                        // console.log(this.segments[i], this.segments[i-1]);
-                        let newCoordinateX = this.segments[i-1].coordinateX;
-                        let newCoordinateY = this.segments[i-1].coordinateY;
-                        // console.log("NEW" + newCoordinateX + "; " + newCoordinateY);
-                        if (i === this.segments.length - 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    }
-                }
+                newHeadCoordinateX = this.segments[0].coordinateX;
+                newHeadCoordinateY = this.segments[0].coordinateY + CELL_SIZE;
+                this.MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY);
                 break;
             case 2:
-                for (let i = this.segments.length - 1; i >= 0; i--) {
-                    if (i === 0) {
-                        let newCoordinateX = this.segments[i].coordinateX - CELL_SIZE;
-                        let newCoordinateY = this.segments[i].coordinateY;
-
-                        if (this.segments.length === 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    } else {
-                        // console.log(i);
-                        // console.log(this.segments[i], this.segments[i-1]);
-                        let newCoordinateX = this.segments[i-1].coordinateX;
-                        let newCoordinateY = this.segments[i-1].coordinateY;
-                        // console.log("NEW" + newCoordinateX + "; " + newCoordinateY);
-                        if (i === this.segments.length - 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    }
-                }
+                newHeadCoordinateX = this.segments[0].coordinateX - CELL_SIZE;
+                newHeadCoordinateY = this.segments[0].coordinateY;
+                this.MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY);
                 break;
             case 3:
-                for (let i = this.segments.length - 1; i >= 0; i--) {
-                    if (i === 0) {
-                        let newCoordinateX = this.segments[i].coordinateX + CELL_SIZE;
-                        let newCoordinateY = this.segments[i].coordinateY;
-
-                        if (this.segments.length === 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    } else {
-                        // console.log(i);
-                        // console.log(this.segments[i], this.segments[i-1]);
-                        let newCoordinateX = this.segments[i-1].coordinateX;
-                        let newCoordinateY = this.segments[i-1].coordinateY;
-                        // console.log("NEW" + newCoordinateX + "; " + newCoordinateY);
-                        if (i === this.segments.length - 1) {
-                            this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        }
-                        this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    }
-                }
+                newHeadCoordinateX = this.segments[0].coordinateX + CELL_SIZE;
+                newHeadCoordinateY = this.segments[0].coordinateY;
+                this.MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY);
                 break;
         }
     }

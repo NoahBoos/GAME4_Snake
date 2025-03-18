@@ -8,3 +8,11 @@ export function GetRandomColor() {
     const blue = GetRandomInt(255);
     return "rgb(" + red + ", " + green + ", " + blue + ")";
 }
+
+export function IsThereSegmentAt(segments, coordinateX, coordinateY) {
+    if (segments.find(segment => segment.coordinateX === coordinateX && segment.coordinateY === coordinateY)) {
+        return true;
+    } else {
+        return false;
+    }
+}

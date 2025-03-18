@@ -11,9 +11,8 @@ export class Segment {
      * @param {string} color - Couleur utilisée pour dessiner le segment.
      * @constructor
      */
-    constructor(context, terrain, coordinateX, coordinateY, color) {
+    constructor(context, coordinateX, coordinateY, color) {
         this.context = context;
-        this.terrain = terrain;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
         this.color = color;
@@ -39,5 +38,6 @@ export class Segment {
     }
 
     CopySegment(coordinateX, coordinateY) {
+
     }
 }
