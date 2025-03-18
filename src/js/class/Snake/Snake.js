@@ -42,7 +42,7 @@ export class Snake {
             this.segments.push(segment);
             this.segments[i+1].DrawSegment();
         }
-        console.log(this.segments);
+        // console.log(this.segments);
         // ENDTEST
 
         this.document.addEventListener("keydown", (event) => {

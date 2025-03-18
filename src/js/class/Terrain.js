@@ -30,7 +30,10 @@ export class Terrain {
         for (let i = 0; i < this.terrain.length; i++) {
             this.terrain[i] = new Array(this.terrainHeight);
             for (let j = 0; j < this.terrain[i].length; j++) {
-                this.terrain[i][j] = 1;
+                this.terrain[i][j] = {
+                    "isOccupied": false,
+                    "type": "ground"
+                };
             }
         }
     }
@@ -66,7 +69,7 @@ export class Terrain {
      * @returns {*} - Les données récupérées d'une cellule.
      */
     ReadTerrainCell(coordinateX, coordinateY) {
-        return this.Terrain[coordinateX][coordinateY];
+        return this.terrain[coordinateX][coordinateY];
     }
 
     /**
