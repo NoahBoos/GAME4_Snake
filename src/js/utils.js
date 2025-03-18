@@ -16,3 +16,12 @@ export function IsThereSegmentAt(segments, coordinateX, coordinateY) {
         return false;
     }
 }
+
+export function GetRandomCoordinates(terrainWidth, terrainHeight) {
+    const coordinateX = Math.floor(Math.random() * (terrainWidth + 1));
+    const coordinateY = Math.floor(Math.random() * (terrainHeight + 1));
+    return {
+        "coordinateX": coordinateX,
+        "coordinateY": coordinateY
+    };
+}
