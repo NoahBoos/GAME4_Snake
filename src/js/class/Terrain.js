@@ -1,4 +1,7 @@
 import {
+    CELL_SIZE
+} from "../global.js";
+import {
     GetRandomColor
 } from "../utils.js";
 
@@ -41,14 +44,14 @@ export class Terrain {
             for (let j = 0; j < this.terrain[i].length; j++) {
                 // this.context.fillStyle = GetRandomColor();
                 this.context.fillStyle = "#FFFFFF";
-                this.context.fillRect(i * 20, j * 20, 20, 20);
-                this.context.strokeRect(i * 20, j * 20, 20, 20);
+                this.context.fillRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
+                this.context.strokeRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
             }
         }
     }
 
     /**
-     * Permet de récupérer les données d'une cellule.
+     * Récupère les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être récupérées.
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être récupérées.
      * @returns {*} - Les données récupérées d'une cellule.
@@ -58,7 +61,7 @@ export class Terrain {
     }
 
     /**
-     * Permet d'écrire les données d'une cellule.
+     * Écrit les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être écrites.
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être écrites.
      * @param value - Les données à écrire dans la cellule.
