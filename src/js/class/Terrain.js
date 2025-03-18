@@ -51,6 +51,15 @@ export class Terrain {
     }
 
     /**
+     *
+     */
+    DrawTerrainCell(coordinateX, coordinateY) {
+        this.context.fillStyle = "#FFFFFF";
+        this.context.fillRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
+        this.context.strokeRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
+    }
+
+    /**
      * Récupère les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être récupérées.
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être récupérées.
