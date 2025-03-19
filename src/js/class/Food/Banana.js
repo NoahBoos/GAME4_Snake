@@ -17,5 +17,8 @@ export class Banana extends Food {
         );
 
         this.DefineCoordinates();
+        this.DrawFood();
+
+        console.log(this);
     }
 }

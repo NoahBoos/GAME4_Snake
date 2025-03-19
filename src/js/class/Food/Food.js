@@ -12,6 +12,11 @@ export class Food {
         this.segmentsToAdd = segmentsToAdd;
     }
 
+    DrawFood() {
+        this.context.fillStyle = this.color;
+        this.context.fillRect(this.coordinateX, this.coordinateY, CELL_SIZE, CELL_SIZE);
+    }
+
     DefineCoordinates() {
         const TERRAIN = this.terrain;
         let newCoordinates;
