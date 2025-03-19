@@ -9,7 +9,8 @@ import {
     GetRandomColor, GetRandomCoordinates
 } from "./utils.js";
 import {Strawberry} from "./class/Food/Strawberry.js";
-import {CELL_SIZE} from "./global.js";
+import {CELL_SIZE, movementIndex} from "./global.js";
+import {StartRAF} from "./requestAnimationFrame.js";
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
@@ -22,5 +23,7 @@ terrain.DrawTerrain();
 
 const snake = new Snake(document, context, terrain, 40, 100, GetRandomColor());
 snake.segments[0].DrawSegment();
+
+StartRAF(0, snake);
 
 const strawberry = new Strawberry(context, terrain);

@@ -1,13 +1,17 @@
 import {
-    CELL_SIZE
+    CELL_SIZE, MovementIndex, movementIndex
 } from "../../global.js";
 import {
     Segment
 } from "./Segment.js";
 import {
-    CreateRandomFood, GetRandomColor,
+    CreateRandomFood,
+    GetRandomColor,
     IsThereSegmentAt
 } from "../../utils.js";
+import {
+    StopRAF
+} from "../../requestAnimationFrame.js";
 
 export class Snake {
     /**
@@ -49,16 +53,28 @@ export class Snake {
         this.document.addEventListener("keydown", (event) => {
             switch (event.key) {
                 case 'z':
-                    this.MoveSnake(0);
+                    MovementIndex(0);
+                    // movementIndex = 0;
+                    // console.log(movementIndex);
+                    // this.MoveSnake(0);
                     break;
                 case 's':
-                    this.MoveSnake(1);
+                    MovementIndex(1);
+                    // movementIndex = 1;
+                    // console.log(movementIndex);
+                    // this.MoveSnake(1);
                     break;
                 case 'q':
-                    this.MoveSnake(2);
+                    MovementIndex(2);
+                    // movementIndex = 2;
+                    // console.log(movementIndex);
+                    // this.MoveSnake(2);
                     break;
                 case 'd':
-                    this.MoveSnake(3);
+                    MovementIndex(3);
+                    // movementIndex = 3;
+                    // console.log(movementIndex);
+                    // this.MoveSnake(3);
                     break;
             }
         })
@@ -66,7 +82,8 @@ export class Snake {
 
     MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
         if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
-            return;
+            // return;
+            StopRAF();
         } else {
             for (let i = this.segments.length - 1; i >= 0; i--) {
                 if (i === 0) {
