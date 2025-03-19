@@ -75,10 +75,11 @@ export class Terrain {
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être écrites.
      * @param value - Les données à écrire dans la cellule.
      */
-    WriteTerrainCell(coordinateX, coordinateY, isOccupied, type) {
+    WriteTerrainCell(coordinateX, coordinateY, isOccupied, type, object) {
         this.terrain[coordinateX][coordinateY] = {
             "isOccupied": isOccupied,
-            "type": type
+            "type": type,
+            "object": object
         };
     }
 }
