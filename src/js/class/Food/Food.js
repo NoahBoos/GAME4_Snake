@@ -1,4 +1,5 @@
 import {GetRandomCoordinates} from "../../utils.js";
+import {CELL_SIZE} from "../../global.js";
 
 export class Food {
     constructor(context, terrain, color, experience, segmentsToAdd) {
@@ -13,7 +14,6 @@ export class Food {
 
     DefineCoordinates() {
         const TERRAIN = this.terrain;
-        console.log("DefineCoordinate has been called.");
         let newCoordinates;
         let terrainCellToCoordinates;
 
@@ -24,5 +24,8 @@ export class Food {
             );
             terrainCellToCoordinates = TERRAIN.ReadTerrainCell(newCoordinates.coordinateX, newCoordinates.coordinateY);
         } while (terrainCellToCoordinates.isOccupied === true);
+
+        this.coordinateX = newCoordinates.coordinateX * CELL_SIZE;
+        this.coordinateY = newCoordinates.coordinateY * CELL_SIZE;
     }
 }
