@@ -7,7 +7,7 @@ export class Banana extends Food {
     static experience = 10;
     static segmentsToAdd = 2;
 
-    constructor(context, terrain, coordinateX, coordinateY) {
+    constructor(context, terrain) {
         super(
             context,
             terrain,
@@ -17,6 +17,7 @@ export class Banana extends Food {
         );
 
         this.DefineCoordinates();
+        this.WriteFoodCell();
         this.DrawFood();
 
         console.log(this);

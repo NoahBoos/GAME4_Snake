@@ -17,6 +17,7 @@ export class Strawberry extends Food {
         );
 
         this.DefineCoordinates();
+        this.WriteFoodCell();
         this.DrawFood();
         console.log(this);
     }

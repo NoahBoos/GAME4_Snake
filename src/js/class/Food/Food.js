@@ -17,6 +17,10 @@ export class Food {
         this.context.fillRect(this.coordinateX, this.coordinateY, CELL_SIZE, CELL_SIZE);
     }
 
+    WriteFoodCell() {
+        this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "food", this);
+    }
+
     DefineCoordinates() {
         const TERRAIN = this.terrain;
         let newCoordinates;
