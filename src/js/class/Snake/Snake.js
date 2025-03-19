@@ -5,6 +5,7 @@ import {
     Segment
 } from "./Segment.js";
 import {
+    CreateRandomFood, GetRandomColor,
     IsThereSegmentAt
 } from "../../utils.js";
 
@@ -32,16 +33,16 @@ export class Snake {
         this.segments[0].DrawSegment();
 
         // TEST
-        for (let i = 0; i <= 3; i++) {
-            // console.log(i);
-            let index = i + 1;
-            // console.log(index);
-            let moveIndex = 20 * -index;
-            // console.log(moveIndex);
-            let segment = new Segment(this.context, this.coordinateX, this.coordinateY + (moveIndex), "#ffe01B")
-            this.segments.push(segment);
-            this.segments[i+1].DrawSegment();
-        }
+        // for (let i = 0; i <= 3; i++) {
+        //     // console.log(i);
+        //     let index = i + 1;
+        //     // console.log(index);
+        //     let moveIndex = 20 * -index;
+        //     // console.log(moveIndex);
+        //     let segment = new Segment(this.context, this.coordinateX, this.coordinateY + (moveIndex), "#ffe01B")
+        //     this.segments.push(segment);
+        //     this.segments[i+1].DrawSegment();
+        // }
         // console.log(this.segments);
         // ENDTEST
 
@@ -69,9 +70,20 @@ export class Snake {
         } else {
             for (let i = this.segments.length - 1; i >= 0; i--) {
                 if (i === 0) {
+                    // Voir "Code Review #1 - Snake" avec GPT.
                     if (this.segments.length === 1) {
                         this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
                     }
+
+                    // En lien avec miamer
+                    let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
+                    // console.log(newPositionCellData);
+                    if (newPositionCellData.type === "food") {
+                        this.AddSegment(newPositionCellData.object.segmentsToAdd);
+                        // console.log(newPositionCellData.object.segmentsToAdd);
+                        CreateRandomFood(this.context, this.terrain);
+                    }
+
                     this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
                     this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head");
                 } else {
@@ -116,7 +128,10 @@ export class Snake {
         }
     }
 
-    AddSegment() {
-
+    AddSegment(segmentsToAdd) {
+        for (let i = 0; i < segmentsToAdd; i++) {
+            const SEGMENT = new Segment(this.context, 0, 0, GetRandomColor());
+            this.segments.push(SEGMENT);
+        }
     }
 }

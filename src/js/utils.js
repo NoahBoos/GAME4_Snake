@@ -1,5 +1,16 @@
+import {
+    Strawberry
+} from "./class/Food/Strawberry.js";
+import {
+    Banana
+} from "./class/Food/Banana.js";
+
 export function GetRandomInt(max) {
     return Math.floor(Math.random() * (max + 1));
+}
+
+export function GetRandomIndexFromArray(arrayLength) {
+    return Math.floor(Math.random() * arrayLength);
 }
 
 export function GetRandomColor() {
@@ -24,4 +35,14 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
         "coordinateX": coordinateX,
         "coordinateY": coordinateY
     };
+}
+
+export function CreateRandomFood(context, terrain) {
+    const FOODS = [Strawberry, Banana];
+
+    let randomIndex = GetRandomIndexFromArray(FOODS.length);
+    console.log(randomIndex);
+    const food = FOODS[randomIndex];
+
+    return new food(context, terrain);
 }
