@@ -73,14 +73,17 @@ export class Snake {
                         this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
                     }
                     this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
+                    this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head");
                 } else {
                     let newCoordinateX = this.segments[i-1].coordinateX;
                     let newCoordinateY = this.segments[i-1].coordinateY;
 
                     if (i === this.segments.length - 1) {
                         this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
+                        this.terrain.WriteTerrainCell(this.segments[i].coordinateX / CELL_SIZE, this.segments[i].coordinateY / CELL_SIZE, false, "ground");
                     }
                     this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
+                    this.terrain.WriteTerrainCell(newCoordinateX / CELL_SIZE, newCoordinateY / CELL_SIZE, true, "segment");
                 }
             }
         }

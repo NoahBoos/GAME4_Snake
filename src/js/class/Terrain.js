@@ -30,10 +30,7 @@ export class Terrain {
         for (let i = 0; i < this.terrain.length; i++) {
             this.terrain[i] = new Array(this.terrainHeight);
             for (let j = 0; j < this.terrain[i].length; j++) {
-                this.terrain[i][j] = {
-                    "isOccupied": false,
-                    "type": "ground"
-                };
+                this.WriteTerrainCell([i], [j], false, "ground");
             }
         }
     }
@@ -78,7 +75,10 @@ export class Terrain {
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être écrites.
      * @param value - Les données à écrire dans la cellule.
      */
-    WriteTerrainCell(coordinateX, coordinateY, value) {
-        this.terrain[coordinateX][coordinateY] = value;
+    WriteTerrainCell(coordinateX, coordinateY, isOccupied, type) {
+        this.terrain[coordinateX][coordinateY] = {
+            "isOccupied": isOccupied,
+            "type": type
+        };
     }
 }
