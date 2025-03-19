@@ -15,5 +15,7 @@ export class Banana extends Food {
             Banana.experience,
             Banana.segmentsToAdd
         );
+
+        this.DefineCoordinates();
     }
 }

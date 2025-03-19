@@ -15,5 +15,7 @@ export class Strawberry extends Food {
             Strawberry.experience,
             Strawberry.segmentsToAdd
         );
+
+        this.DefineCoordinates();
     }
 }
