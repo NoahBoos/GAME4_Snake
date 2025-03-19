@@ -36,8 +36,4 @@ export class Segment {
         this.coordinateY = coordinateY;
         this.DrawSegment();
     }
-
-    CopySegment(coordinateX, coordinateY) {
-
-    }
 }

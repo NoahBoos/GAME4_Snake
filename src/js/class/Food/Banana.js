@@ -2,11 +2,20 @@ import {
     Food
 } from "./Food.js"
 
+/**
+ *
+ */
 export class Banana extends Food {
     static color = "#FFE01B";
     static experience = 10;
     static segmentsToAdd = 2;
 
+    /**
+     *
+     * @param context
+     * @param terrain
+     * @constructor
+     */
     constructor(context, terrain) {
         super(
             context,

@@ -36,20 +36,6 @@ export class Snake {
         this.segments.push(this.head);
         this.segments[0].DrawSegment();
 
-        // TEST
-        // for (let i = 0; i <= 3; i++) {
-        //     // console.log(i);
-        //     let index = i + 1;
-        //     // console.log(index);
-        //     let moveIndex = 20 * -index;
-        //     // console.log(moveIndex);
-        //     let segment = new Segment(this.context, this.coordinateX, this.coordinateY + (moveIndex), "#ffe01B")
-        //     this.segments.push(segment);
-        //     this.segments[i+1].DrawSegment();
-        // }
-        // console.log(this.segments);
-        // ENDTEST
-
         this.document.addEventListener("keydown", (event) => {
             switch (event.key) {
                 case 'z':
@@ -80,6 +66,11 @@ export class Snake {
         })
     }
 
+    /**
+     *
+     * @param newHeadCoordinateX
+     * @param newHeadCoordinateY
+     */
     MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
         if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
             // return;
@@ -118,6 +109,10 @@ export class Snake {
         }
     }
 
+    /**
+     *
+     * @param direction
+     */
     MoveSnake(direction) {
         let newHeadCoordinateX = 0;
         let newHeadCoordinateY = 0;
@@ -145,6 +140,10 @@ export class Snake {
         }
     }
 
+    /**
+     *
+     * @param segmentsToAdd
+     */
     AddSegment(segmentsToAdd) {
         for (let i = 0; i < segmentsToAdd; i++) {
             const SEGMENT = new Segment(this.context, 0, 0, GetRandomColor());

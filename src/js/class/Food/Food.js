@@ -1,7 +1,19 @@
 import {GetRandomCoordinates} from "../../utils.js";
 import {CELL_SIZE} from "../../global.js";
 
+/**
+ *
+ */
 export class Food {
+    /**
+     *
+     * @param context
+     * @param terrain
+     * @param color
+     * @param experience
+     * @param segmentsToAdd
+     * @constructor
+     */
     constructor(context, terrain, color, experience, segmentsToAdd) {
         this.context = context;
         this.terrain = terrain;
@@ -12,15 +24,24 @@ export class Food {
         this.segmentsToAdd = segmentsToAdd;
     }
 
+    /**
+     *
+     */
     DrawFood() {
         this.context.fillStyle = this.color;
         this.context.fillRect(this.coordinateX, this.coordinateY, CELL_SIZE, CELL_SIZE);
     }
 
+    /**
+     *
+     */
     WriteFoodCell() {
         this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "food", this);
     }
 
+    /**
+     *
+     */
     DefineCoordinates() {
         const TERRAIN = this.terrain;
         let newCoordinates;

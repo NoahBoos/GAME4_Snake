@@ -7,6 +7,12 @@ export class Strawberry extends Food {
     static experience = 5;
     static segmentsToAdd = 1;
 
+    /**
+     *
+     * @param context
+     * @param terrain
+     * @constructor
+     */
     constructor(context, terrain) {
         super(
             context,

@@ -52,6 +52,9 @@ export class Terrain {
 
     /**
      *
+     * @param coordinateX
+     * @param coordinateY
+     * @constructor
      */
     DrawTerrainCell(coordinateX, coordinateY) {
         this.context.fillStyle = "#FFFFFF";
@@ -73,7 +76,9 @@ export class Terrain {
      * Écrit les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être écrites.
      * @param coordinateY - La coordonnée Y de la cellule dont les données doivent être écrites.
-     * @param value - Les données à écrire dans la cellule.
+     * @param isOccupied
+     * @param type
+     * @param object
      */
     WriteTerrainCell(coordinateX, coordinateY, isOccupied, type, object) {
         this.terrain[coordinateX][coordinateY] = {
