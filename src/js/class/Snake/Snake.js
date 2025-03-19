@@ -18,14 +18,17 @@ export class Snake {
      *
      * @param document
      * @param context
+     * @param player
+     * @param terrain
      * @param coordinateX
      * @param coordinateY
      * @param color
      * @constructor
      */
-    constructor(document, context, terrain, coordinateX, coordinateY, color) {
+    constructor(document, context, player, terrain, coordinateX, coordinateY, color) {
         this.document = document;
         this.context = context;
+        this.player = player;
         this.terrain = terrain;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;
@@ -40,27 +43,15 @@ export class Snake {
             switch (event.key) {
                 case 'z':
                     MovementIndex(0);
-                    // movementIndex = 0;
-                    // console.log(movementIndex);
-                    // this.MoveSnake(0);
                     break;
                 case 's':
                     MovementIndex(1);
-                    // movementIndex = 1;
-                    // console.log(movementIndex);
-                    // this.MoveSnake(1);
                     break;
                 case 'q':
                     MovementIndex(2);
-                    // movementIndex = 2;
-                    // console.log(movementIndex);
-                    // this.MoveSnake(2);
                     break;
                 case 'd':
                     MovementIndex(3);
-                    // movementIndex = 3;
-                    // console.log(movementIndex);
-                    // this.MoveSnake(3);
                     break;
             }
         })
@@ -88,7 +79,7 @@ export class Snake {
                     // console.log(newPositionCellData);
                     if (newPositionCellData.type === "food") {
                         this.AddSegment(newPositionCellData.object.segmentsToAdd);
-                        // console.log(newPositionCellData.object.segmentsToAdd);
+                        this.player.GainExp(newPositionCellData.object.experience);
                         CreateRandomFood(this.context, this.terrain);
                     }
 

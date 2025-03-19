@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container__aside {
+
+}
+
+.progressBar {
+    width: 100%;
+    background-color: lightgray;
+}
+
+.progressBarValue {
+    width: 0;
+    height: 30px;
+    background-color: lawngreen;
+}
