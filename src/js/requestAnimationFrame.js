@@ -6,8 +6,9 @@ import {
 let animationTimer = 0;
 let startTime = 0;
 // Fréquence d'affichage maximum
-const maxFPS = 60;
-const interval = 1000 / maxFPS;
+// const maxFPS = 60;
+const moveSnakeSpeed = 15;
+const interval = 1000 / moveSnakeSpeed;
 
 // Fonction permettant de démarrer l'animation
 export function StartRAF(timestamp = 0, snake) {
