@@ -66,7 +66,6 @@ export class Snake {
             }
         })
     }
-
     /**
      * Permet de mouvoir les segments du snake. Le comportement diffère selon si le segment à mouvoir est la tête ou une partie du corps.
      * @param {number} newHeadCoordinateX - Nouvelle coordonnée X de la tête.
@@ -90,13 +89,15 @@ export class Snake {
                      */
                     let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
                     /**
-                     * Si cette cellule est de type "sweetFruit", alors on effectue les actions suivantes :
-                     * - On appelle AddSegment() avec comme paramètre la valeur "segmentsToAdd" de la nourriture consommée.
-                     * - On appelle GainExp() avec comme paramètre la valeur "experience" de la nourriture consommée.
-                     * - On crée une nouvelle nourriture pour le serpent.
+                     * Si cette cellule est de type "sweetFruit", alors on effectue une série d'actions ;
+                     * Sinon, si cette cellule est de type "sourFruit", alors on effectue une autre série d'actions.
                      */
                     if (newPositionCellData.type === "sweetFruit") {
                         this.AddSegment(newPositionCellData.object.segmentsToAdd);
+                        this.player.GainExp(newPositionCellData.object.experience);
+                        CreateRandomFood(this.context, this.terrain);
+                    } else if (newPositionCellData.type === "sourFruit") {
+                        this.RemoveSegment(newPositionCellData.object.segmentsToRemove);
                         this.player.GainExp(newPositionCellData.object.experience);
                         CreateRandomFood(this.context, this.terrain);
                     }
@@ -140,7 +141,6 @@ export class Snake {
             }
         }
     }
-
     /**
      * Calcule les coordonnées de la tête du serpent (et donc sa direction), avant de lancer MoveSnakeSegments() pour mouvoir le serpent dans son entièreté.
      * @param {number} direction - Variable définissant la direction du mouvement. 0 = Avant ; 1 = Arrière ; 2 = Gauche ; 3 = Droite.
@@ -179,7 +179,6 @@ export class Snake {
                 break;
         }
     }
-
     /**
      * Ajoute autant de segments que passés en paramètre au serpent.
      * @param {number} segmentsToAdd - Nombre de segments à ajouter.
@@ -188,6 +187,25 @@ export class Snake {
         for (let i = 0; i < segmentsToAdd; i++) {
             const SEGMENT = new Segment(this.context, 0, 0, GetRandomColor());
             this.segments.push(SEGMENT);
+        }
+    }
+    /**
+     * Retire autant de segments que passés en paramètre au serpent.
+     * Redessine également une cellule de terrain par-dessus le segment qui a été retiré.
+     * @param {number} segmentsToRemove - Nombre de segments à retirer.
+     */
+    RemoveSegment(segmentsToRemove) {
+        for (let i = 0; i < segmentsToRemove; i++) {
+            const SEGMENT_NUMBER = this.segments.length - 1 - i;
+
+            if (SEGMENT_NUMBER === 0) {
+                return;
+            } else {
+                const removedSegmentCoordinateX = this.segments[SEGMENT_NUMBER - 1].coordinateX;
+                const removedSegmentCoordinateY = this.segments[SEGMENT_NUMBER - 1].coordinateY;
+                this.terrain.DrawTerrainCell(removedSegmentCoordinateX, removedSegmentCoordinateY);
+                this.segments.splice(this.segments.length - 1, 1);
+            }
         }
     }
 }

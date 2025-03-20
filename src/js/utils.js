@@ -4,6 +4,7 @@ import {
 import {
     Banana
 } from "./class/SweetFruit/Banana.js";
+import {Lemon} from "./class/SourFruit/Lemon.js";
 
 /**
  * Génère un entier pseudo-aléatoire.
@@ -63,14 +64,13 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
  * Crée une nouvelle nourriture sur le terrain.
  * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
  * @param {Terrain} terrain - Une instance du terrain.
- * @returns {Strawberry|Banana}
+ * @returns {object}
  */
 export function CreateRandomFood(context, terrain) {
-    const FOODS = [Strawberry, Banana];
-
+    const FOODS = [Strawberry, Banana, Lemon];
     let randomIndex = GetRandomIndexFromArray(FOODS.length);
-    console.log(randomIndex);
+    // console.log(randomIndex);
     const food = FOODS[randomIndex];
-
+    // console.log(food);
     return new food(context, terrain);
 }

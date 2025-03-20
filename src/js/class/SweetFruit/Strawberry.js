@@ -41,7 +41,7 @@ export class Strawberry extends SweetFruit {
          * Dessine l'aliment.
          */
         this.DefineCoordinates();
-        this.WriteFoodCell();
-        this.DrawFood();
+        this.WriteFruitCell();
+        this.DrawFruit();
     }
 }

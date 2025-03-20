@@ -1,24 +1,24 @@
 import {GetRandomCoordinates} from "../../utils.js";
 import {CELL_SIZE} from "../../global.js";
 
-export class SweetFruit {
+export class SourFruit {
     /**
-     * Le constructeur de la classe SweetFruit.
+     * Le constructeur de la classe SourFruit.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
      * @param {Terrain} terrain - Instance de la classe Terrain.
-     * @param {string} color - Couleur du fruit doux.
+     * @param {string} color - Couleur du fruit acide.
      * @param {number} experience - Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
-     * @param {number} segmentsToAdd - Nombre de segments à ajouter au serpent.
+     * @param {number} segmentsToRemove - Nombre de segments à retirer du serpent.
      * @constructor
      */
-    constructor(context, terrain, color, experience, segmentsToAdd) {
+    constructor(context, terrain, color, experience, segmentsToRemove) {
         this.context = context;
         this.terrain = terrain;
         this.coordinateX = 0;
         this.coordinateY = 0;
         this.color = color;
         this.experience = experience;
-        this.segmentsToAdd = segmentsToAdd;
+        this.segmentsToRemove = segmentsToRemove;
     }
     /**
      * Dessine un fruit dans le canvas. Chaque fruit a une dimension de 20 pixels * 20 pixels.
@@ -30,11 +30,11 @@ export class SweetFruit {
     /**
      * Écrit les données d'une cellule de nourriture en appelant WriteTerrainCell().
      * - isOccupied = true ;
-     * - type = "sweetFruit" ;
+     * - type = "sourFruit" ;
      * - object = this
      */
     WriteFruitCell() {
-        this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "sweetFruit", this);
+        this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "sourFruit", this);
     }
     /**
      * Définit les coordonnées d'un fruit de sorte qu'un fruit se trouve nécessairement sur une cellule libre du terrain.
