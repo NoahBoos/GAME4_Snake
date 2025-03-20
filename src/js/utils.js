@@ -6,25 +6,23 @@ import {
 } from "./class/Food/Banana.js";
 
 /**
- *
- * @param max
+ * Génère un entier pseudo-aléatoire.
+ * @param max - Valeur maximale du chiffre à générer.
  * @returns {number}
  */
 export function GetRandomInt(max) {
     return Math.floor(Math.random() * (max + 1));
 }
-
 /**
- *
- * @param arrayLength
+ * Génère un index pseudo-aléatoire d'une array.
+ * @param arrayLength - Longueur maximale de l'array.
  * @returns {number}
  */
 export function GetRandomIndexFromArray(arrayLength) {
     return Math.floor(Math.random() * arrayLength);
 }
-
 /**
- *
+ * Génère une couleur pseudo-aléatoire et la retourne sous la forme d'une chaîne de caractères.
  * @returns {string}
  */
 export function GetRandomColor() {
@@ -33,12 +31,11 @@ export function GetRandomColor() {
     const blue = GetRandomInt(255);
     return "rgb(" + red + ", " + green + ", " + blue + ")";
 }
-
 /**
- *
- * @param segments
- * @param coordinateX
- * @param coordinateY
+ * Vérifie si un segment se trouve à des coordonnées données.
+ * @param segments - Array de segments.
+ * @param coordinateX - Coordonnée X à vérifier.
+ * @param coordinateY - Coordonnée Y à vérifier.
  * @returns {boolean}
  */
 export function IsThereSegmentAt(segments, coordinateX, coordinateY) {
@@ -48,11 +45,10 @@ export function IsThereSegmentAt(segments, coordinateX, coordinateY) {
         return false;
     }
 }
-
 /**
- *
- * @param terrainWidth
- * @param terrainHeight
+ * Génère des coordonnées pseudo-aléatoires.
+ * @param terrainWidth - Nombre de lignes du terrain.
+ * @param terrainHeight - Nombre de colonnes du terrain.
  * @returns {{coordinateX: number, coordinateY: number}}
  */
 export function GetRandomCoordinates(terrainWidth, terrainHeight) {
@@ -63,12 +59,11 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
         "coordinateY": coordinateY
     };
 }
-
 /**
- *
- * @param context
- * @param terrain
- * @returns {Banana}
+ * Crée une nouvelle nourriture sur le terrain.
+ * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
+ * @param {Terrain} terrain - Une instance du terrain.
+ * @returns {Strawberry|Banana}
  */
 export function CreateRandomFood(context, terrain) {
     const FOODS = [Strawberry, Banana];
