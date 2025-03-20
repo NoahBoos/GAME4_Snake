@@ -1,39 +1,39 @@
 import {
-    Food
-} from "./Food.js";
+    SweetFruit
+} from "./SweetFruit.js"
 
-export class Strawberry extends Food {
+export class Banana extends SweetFruit {
     /**
      * @type {string} color
      * Couleur du fruit
      */
-    static color = "#FF0000";
+    static color = "#FFE01B";
     /**
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 5;
+    static experience = 10;
     /**
      * @type {number} segmentsToAdd
      * Nombre de segments à ajouter au serpent.
      */
-    static segmentsToAdd = 1;
+    static segmentsToAdd = 2;
     /**
-     * Le constructeur de la classe Strawberry.
+     * Le constructeur de la classe Banana.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
      * @param {Terrain} terrain - Instance de la classe Terrain.
      * @constructor
      */
     constructor(context, terrain) {
         /**
-         * Appel au constructeur de la classe dont Strawberry hérite, c'est-à-dire "Food".
+         * Appel au constructeur de la classe dont Banana hérite, c'est-à-dire "SweetFruit".
          */
         super(
             context,
             terrain,
-            Strawberry.color,
-            Strawberry.experience,
-            Strawberry.segmentsToAdd
+            Banana.color,
+            Banana.experience,
+            Banana.segmentsToAdd
         );
         /**
          * Définit les coordonnées de l'aliment.

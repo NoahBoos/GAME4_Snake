@@ -1,9 +1,9 @@
 import {GetRandomCoordinates} from "../../utils.js";
 import {CELL_SIZE} from "../../global.js";
 
-export class Food {
+export class SweetFruit {
     /**
-     * Le constructeur de la classe Food.
+     * Le constructeur de la classe SweetFruit.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
      * @param {Terrain} terrain - Instance de la classe Terrain.
      * @param {string} color - Couleur de la tête du serpent.
@@ -31,11 +31,11 @@ export class Food {
     /**
      * Écrit les données d'une cellule de nourriture en appelant WriteTerrainCell().
      * - isOccupied = true ;
-     * - type = "food" ;
+     * - type = "sweetFood" ;
      * - object = this
      */
     WriteFoodCell() {
-        this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "food", this);
+        this.terrain.WriteTerrainCell(this.coordinateX / CELL_SIZE, this.coordinateY / CELL_SIZE, true, "sweetFruit", this);
     }
 
     /**

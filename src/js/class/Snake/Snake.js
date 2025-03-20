@@ -90,12 +90,12 @@ export class Snake {
                      */
                     let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
                     /**
-                     * Si cette cellule est de type "food", alors on effectue les actions suivantes :
+                     * Si cette cellule est de type "sweetFruit", alors on effectue les actions suivantes :
                      * - On appelle AddSegment() avec comme paramètre la valeur "segmentsToAdd" de la nourriture consommée.
                      * - On appelle GainExp() avec comme paramètre la valeur "experience" de la nourriture consommée.
                      * - On crée une nouvelle nourriture pour le serpent.
                      */
-                    if (newPositionCellData.type === "food") {
+                    if (newPositionCellData.type === "sweetFruit") {
                         this.AddSegment(newPositionCellData.object.segmentsToAdd);
                         this.player.GainExp(newPositionCellData.object.experience);
                         CreateRandomFood(this.context, this.terrain);
@@ -108,7 +108,7 @@ export class Snake {
                      * - object = this
                      */
                     this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
-                    this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head");
+                    this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head", this);
                 } else {
                     /**
                      * Définit les coordonnées d'un n comme les coordonnées du segment n-1.

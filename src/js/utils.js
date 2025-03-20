@@ -1,9 +1,9 @@
 import {
     Strawberry
-} from "./class/Food/Strawberry.js";
+} from "./class/SweetFruit/Strawberry.js";
 import {
     Banana
-} from "./class/Food/Banana.js";
+} from "./class/SweetFruit/Banana.js";
 
 /**
  * Génère un entier pseudo-aléatoire.
