@@ -20,7 +20,6 @@ export class Terrain {
         this.terrain = new Array(this.terrainWidth);
         this.InitializeTerrain();
     }
-
     /**
      * Initialise la propriété terrain[].
      * - Crée autant d'Array[] que de lignes dans terrain[].
@@ -34,7 +33,6 @@ export class Terrain {
             }
         }
     }
-
     /**
      * Dessine un terrain dans le canvas. Chaque cellule a une dimension de 20 pixels * 20 pixels.
      */
@@ -49,7 +47,6 @@ export class Terrain {
             }
         }
     }
-
     /**
      * Permet de redessiner une cellule de terrain vide.
      * On y appelle WriteTerrainCell() pour vider cette même cellule de ses données.
@@ -64,7 +61,6 @@ export class Terrain {
         // this.WriteTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE, false, "ground", null);
         // console.log(this.ReadTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE));
     }
-
     /**
      * Récupère les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être récupérées.
@@ -74,7 +70,6 @@ export class Terrain {
     ReadTerrainCell(coordinateX, coordinateY) {
         return this.terrain[coordinateX][coordinateY];
     }
-
     /**
      * Écrit les données d'une cellule.
      * @param coordinateX - La coordonnée X de la cellule dont les données doivent être écrites.
