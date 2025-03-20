@@ -4,7 +4,7 @@ import {
 
 export class Segment {
     /**
-     * Le constructeur de la class Segment.
+     * Le constructeur de la classe Segment.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
      * @param {number} coordinateX - Coordonnée X du segment.
      * @param {number} coordinateY - Coordonnée Y du segment.
@@ -17,7 +17,6 @@ export class Segment {
         this.coordinateY = coordinateY;
         this.color = color;
     }
-
     /**
      * Dessine un segment du serpent dans le canvas. Chaque segment a une dimension de 20 pixels * 20 pixels.
      */
@@ -25,7 +24,6 @@ export class Segment {
         this.context.fillStyle = this.color;
         this.context.fillRect(this.coordinateX, this.coordinateY, CELL_SIZE, CELL_SIZE);
     }
-
     /**
      * Déplace un segment à des coordonnées passées en paramètre dans le canvas.
      * @param {number} coordinateX - Coordonnée X où mouvoir le segment.
