@@ -15,14 +15,14 @@ import {
 
 export class Snake {
     /**
-     *
-     * @param document
-     * @param context
-     * @param player
-     * @param terrain
-     * @param coordinateX
-     * @param coordinateY
-     * @param color
+     * Le constructeur de la classe Snake.
+     * @param document - Document du DOM.
+     * @param context - Contexte utilisé pour interagir sur le canvas.
+     * @param player - Instance de la classe PlayerAccount.
+     * @param terrain - Instance de la classe Terrain.
+     * @param coordinateX - Coordonnée X de la tête du serpent.
+     * @param coordinateY - Coordonnée Y de la tête du serpent.
+     * @param color - Couleur de la tête du serpent.
      * @constructor
      */
     constructor(document, context, player, terrain, coordinateX, coordinateY, color) {
@@ -58,13 +58,12 @@ export class Snake {
     }
 
     /**
-     *
-     * @param newHeadCoordinateX
-     * @param newHeadCoordinateY
+     * Permet de mouvoir les segments du snake. Le comportement diffère selon si le segment à mouvoir est la tête ou une partie du corps.
+     * @param newHeadCoordinateX - Nouvelle coordonnée X de la tête.
+     * @param newHeadCoordinateY - Nouvelle coordonnée Y de la tête.
      */
     MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
         if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
-            // return;
             StopRAF();
         } else {
             for (let i = this.segments.length - 1; i >= 0; i--) {
@@ -101,8 +100,8 @@ export class Snake {
     }
 
     /**
-     *
-     * @param direction
+     * Calcule les coordonnées de la tête du serpent (et donc sa direction), avant de lancer MoveSnakeSegments() pour mouvoir le serpent dans son entièreté.
+     * @param direction - Variable définissant la direction du mouvement. 0 = Avant ; 1 = Arrière ; 2 = Gauche ; 3 = Droite.
      */
     MoveSnake(direction) {
         let newHeadCoordinateX = 0;
@@ -132,8 +131,8 @@ export class Snake {
     }
 
     /**
-     *
-     * @param segmentsToAdd
+     * Ajoute autant de segments que passés en paramètre au serpent.
+     * @param segmentsToAdd - Nombre de segments à ajouter.
      */
     AddSegment(segmentsToAdd) {
         for (let i = 0; i < segmentsToAdd; i++) {

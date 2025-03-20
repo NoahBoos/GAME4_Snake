@@ -51,15 +51,18 @@ export class Terrain {
     }
 
     /**
-     *
-     * @param coordinateX
-     * @param coordinateY
-     * @constructor
+     * Permet de redessiner une cellule de terrain vide.
+     * On y appelle WriteTerrainCell() pour vider cette même cellule de ses données.
+     * @param coordinateX - Coordonnée X de la cellule à redessiner.
+     * @param coordinateY - Coordonnée Y de la cellule à redessiner.
      */
     DrawTerrainCell(coordinateX, coordinateY) {
         this.context.fillStyle = "#FFFFFF";
         this.context.fillRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
         this.context.strokeRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
+        // À vérifier
+        // this.WriteTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE, false, "ground", null);
+        // console.log(this.ReadTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE));
     }
 
     /**
