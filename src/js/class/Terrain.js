@@ -40,8 +40,10 @@ export class Terrain {
         for (let i = 0; i < this.terrain.length; i++) {
             this.context.fillStyle = GetRandomColor;
             for (let j = 0; j < this.terrain[i].length; j++) {
-                // this.context.fillStyle = GetRandomColor();
+                // Terrain neutre
                 this.context.fillStyle = "#FFFFFF";
+                // Terrain désertique
+                this.context.fillStyle = "#fff89e";
                 this.context.fillRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
                 this.context.strokeRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
             }
@@ -54,7 +56,10 @@ export class Terrain {
      * @param coordinateY - Coordonnée Y de la cellule à redessiner.
      */
     DrawTerrainCell(coordinateX, coordinateY) {
+        // Terrain neutre
         this.context.fillStyle = "#FFFFFF";
+        // Terrain désertique
+        this.context.fillStyle = "#fff89e";
         this.context.fillRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
         this.context.strokeRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
         // À vérifier
