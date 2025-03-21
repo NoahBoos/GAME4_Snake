@@ -199,15 +199,16 @@ export class Snake {
      */
     RemoveSegment(segmentsToRemove) {
         for (let i = 0; i < segmentsToRemove; i++) {
-            const SEGMENT_NUMBER = this.segments.length - i;
-
-            if (SEGMENT_NUMBER === 0) {
-                return;
+            const SEGMENT = this.segments[this.segments.length - 1];
+            if (this.segments.length === 1) {
+                return
             } else {
-                const removedSegmentCoordinateX = this.segments[SEGMENT_NUMBER - 1].coordinateX;
-                const removedSegmentCoordinateY = this.segments[SEGMENT_NUMBER - 1].coordinateY;
+                const removedSegmentCoordinateX = this.segments[this.segments.length - 1].coordinateX;
+                const removedSegmentCoordinateY = this.segments[this.segments.length - 1].coordinateY;
+
                 this.terrain.DrawTerrainCell(removedSegmentCoordinateX, removedSegmentCoordinateY);
                 this.terrain.WriteTerrainCell(removedSegmentCoordinateX / CELL_SIZE, removedSegmentCoordinateY / CELL_SIZE, false, "ground", null);
+
                 this.segments.splice(this.segments.length - 1, 1);
             }
         }
