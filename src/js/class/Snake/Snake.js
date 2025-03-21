@@ -90,7 +90,8 @@ export class Snake {
                     let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
                     /**
                      * Si cette cellule est de type "sweetFruit", alors on effectue une série d'actions ;
-                     * Sinon, si cette cellule est de type "sourFruit", alors on effectue une autre série d'actions.
+                     * Sinon, si cette cellule est de type "sourFruit", alors on effectue une autre série d'actions ;
+                     * Sinon, si cette cellule est de type "obstacleCell", alors on effectue une autre série d'actions.
                      */
                     if (newPositionCellData.type === "sweetFruit") {
                         this.AddSegment(newPositionCellData.object.segmentsToAdd);
@@ -100,6 +101,8 @@ export class Snake {
                         this.RemoveSegment(newPositionCellData.object.segmentsToRemove);
                         this.player.GainExp(newPositionCellData.object.experience);
                         CreateRandomFood(this.context, this.terrain);
+                    } else if (newPositionCellData.type === "obstacleCell") {
+                        StopRAF();
                     }
                     /**
                      * Redessine la tête du serpent à sa nouvelle position.
