@@ -61,6 +61,21 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
     };
 }
 /**
+ * Génère des coordonnées pseudo-aléatoires à partir de contraintes.
+ * @param terrainWidth - Nombre de lignes du terrain.
+ * @param terrainHeight - Nombre de colonnes du terrain.
+ * @returns {{coordinateX: number, coordinateY: number}}
+ */
+export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
+    const coordinateX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+    const coordinateY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+    console.log(coordinateY);
+    return {
+        "coordinateX": coordinateX,
+        "coordinateY": coordinateY
+    };
+}
+/**
  * Crée une nouvelle nourriture sur le terrain.
  * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
  * @param {Terrain} terrain - Une instance du terrain.
