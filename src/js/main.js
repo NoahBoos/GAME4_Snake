@@ -13,14 +13,14 @@ import {
 import {Strawberry} from "./class/SweetFruit/Strawberry.js";
 import {StartRAF} from "./requestAnimationFrame.js";
 import {PlayerAccount} from "./class/Player/PlayerAccount.js";
-import {GenerateUObstacle} from "./class/Obstacle/ObstacleTemplate.js";
+import {GenerateTObstacle, GenerateUObstacle} from "./class/Obstacle/ObstacleTemplate.js";
 
 const player = new PlayerAccount("Rift");
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const terrain = new Terrain(context, 30, 30);
+const terrain = new Terrain(context, 50, 35);
 terrain.DrawTerrain();
 
 const snake = new Snake(document, context, player, terrain, 40, 100);
@@ -30,6 +30,7 @@ StartRAF(0, snake);
 
 GenerateUObstacle(context, terrain);
 GenerateUObstacle(context, terrain);
+GenerateTObstacle(context, terrain);
 const strawberry = new Strawberry(context, terrain);
 
 // ASIDE HTML ELEMENTS
