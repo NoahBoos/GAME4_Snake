@@ -63,8 +63,10 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
 }
 /**
  * Génère des coordonnées pseudo-aléatoires à partir de contraintes.
- * @param terrainWidth - Nombre de lignes du terrain.
- * @param terrainHeight - Nombre de colonnes du terrain.
+ * @param minX - Coordonnée X minimum.
+ * @param maxX - Coordonnée X maximum.
+ * @param minY - Coordonnée Y minimum.
+ * @param maxY - Coordonnée Y maximum.
  * @returns {{coordinateX: number, coordinateY: number}}
  */
 export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
@@ -85,8 +87,6 @@ export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
 export function CreateRandomFood(context, terrain) {
     const FOODS = [Strawberry, Banana, Lemon, GreenLemon];
     let randomIndex = GetRandomIndexFromArray(FOODS.length);
-    // console.log(randomIndex);
     const food = FOODS[randomIndex];
-    // console.log(food);
     return new food(context, terrain);
 }
