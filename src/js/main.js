@@ -22,7 +22,7 @@ const context = canvas.getContext('2d');
 const terrain = new Terrain(context, 30, 30);
 terrain.DrawTerrain();
 
-const snake = new Snake(document, context, player, terrain, 40, 100, GetRandomColor());
+const snake = new Snake(document, context, player, terrain, 40, 100);
 snake.segments[0].DrawSegment();
 
 StartRAF(0, snake);

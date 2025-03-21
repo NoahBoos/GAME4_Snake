@@ -11,7 +11,7 @@ export class Segment {
      * @param {string} color - Couleur utilisée pour dessiner le segment.
      * @constructor
      */
-    constructor(context, coordinateX, coordinateY, color) {
+    constructor(context, coordinateX, coordinateY, color = "#71B340") {
         this.context = context;
         this.coordinateX = coordinateX;
         this.coordinateY = coordinateY;

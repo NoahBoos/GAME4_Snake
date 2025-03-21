@@ -25,7 +25,7 @@ export class Snake {
      * @param {string} color - Couleur de la tête du serpent.
      * @constructor
      */
-    constructor(document, context, player, terrain, coordinateX, coordinateY, color) {
+    constructor(document, context, player, terrain, coordinateX, coordinateY, color = "#2F4C31") {
         /**
          * Assignation des objets et des variables externes.
          */
@@ -185,7 +185,7 @@ export class Snake {
      */
     AddSegment(segmentsToAdd) {
         for (let i = 0; i < segmentsToAdd; i++) {
-            const SEGMENT = new Segment(this.context, 0, 0, GetRandomColor());
+            const SEGMENT = new Segment(this.context, 0, 0);
             this.segments.push(SEGMENT);
         }
     }
