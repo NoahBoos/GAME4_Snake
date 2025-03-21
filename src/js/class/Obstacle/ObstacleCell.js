@@ -68,20 +68,14 @@ export class ObstacleCell {
         let terrainCellToCoordinates;
 
         do {
-            // newCoordinates = GetRandomCoordinates(
-            //     TERRAIN.terrainWidth,
-            //     TERRAIN.terrainHeight
-            // )
             newCoordinates = GetRandomCoordinatesWithConstraint(
-                3, TERRAIN.terrainWidth - 4,
-                4, TERRAIN.terrainHeight - 4
+                3, TERRAIN.terrainWidth - 6,
+                4, TERRAIN.terrainHeight - 8
             );
             terrainCellToCoordinates = TERRAIN.ReadTerrainCell(newCoordinates.coordinateX, newCoordinates.coordinateY);
         } while (terrainCellToCoordinates.isOccupied === true);
 
         this.coordinateX = newCoordinates.coordinateX * CELL_SIZE;
         this.coordinateY = newCoordinates.coordinateY * CELL_SIZE;
-        // console.log(this.coordinateX);
-        // console.log(this.coordinateY);
     }
 }
