@@ -13,6 +13,7 @@ import {
 import {Strawberry} from "./class/SweetFruit/Strawberry.js";
 import {StartRAF} from "./requestAnimationFrame.js";
 import {PlayerAccount} from "./class/Player/PlayerAccount.js";
+import {GenerateUObstacle} from "./class/Obstacle/ObstacleTemplate.js";
 
 const player = new PlayerAccount("Rift");
 
@@ -27,6 +28,8 @@ snake.segments[0].DrawSegment();
 
 StartRAF(0, snake);
 
+GenerateUObstacle(context, terrain);
+GenerateUObstacle(context, terrain);
 const strawberry = new Strawberry(context, terrain);
 
 // ASIDE HTML ELEMENTS
