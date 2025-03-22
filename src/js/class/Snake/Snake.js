@@ -72,77 +72,72 @@ export class Snake {
      * @param {number} newHeadCoordinateY - Nouvelle coordonnée Y de la tête.
      */
     MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
-        if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
-            StopRAF();
-            this.player.SaveToLocalStorage();
-        } else {
-            for (let i = this.segments.length - 1; i >= 0; i--) {
-                if (i === 0) {
-                    /**
-                     * Permet de redessiner une cellule de terrain si la tête du serpent est son seul segment.
-                     */
-                    if (this.segments.length === 1) {
-                        this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                    }
-                    /**
-                     * @type {Object} newPositionCellData
-                     * Objet contenant les données de la cellule de terrain où la tête va se déplacer.
-                     */
-                    let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
-                    /**
-                     * Si cette cellule est de type "sweetFruit", alors on effectue une série d'actions ;
-                     * Sinon, si cette cellule est de type "sourFruit", alors on effectue une autre série d'actions ;
-                     * Sinon, si cette cellule est de type "obstacleCell", alors on effectue une autre série d'actions.
-                     */
-                    if (newPositionCellData.type === "sweetFruit") {
-                        this.AddSegment(newPositionCellData.object.segmentsToAdd);
-                        this.player.GainExp(newPositionCellData.object.experience);
-                        CreateRandomFood(this.context, this.terrain);
-                    } else if (newPositionCellData.type === "sourFruit") {
-                        this.RemoveSegment(newPositionCellData.object.segmentsToRemove);
-                        this.player.GainExp(newPositionCellData.object.experience);
-                        CreateRandomFood(this.context, this.terrain);
-                    } else if (newPositionCellData.type === "obstacleCell") {
-                        StopRAF();
-                        this.player.SaveToLocalStorage();
-                    }
-                    /**
-                     * Redessine la tête du serpent à sa nouvelle position.
-                     * Redéfinit également les données de cette cellule :
-                     * - isOccupied = true ;
-                     * - type = "head" ;
-                     * - object = this
-                     */
-                    this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
-                    this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head", this);
-                } else {
-                    /**
-                     * Définit les coordonnées d'un n comme les coordonnées du segment n-1.
-                     * C'est-à-dire qu'un segment aura pour prochaine coordonnée les coordonnées du segment devant lui.
-                     */
-                    let newCoordinateX = this.segments[i-1].coordinateX;
-                    let newCoordinateY = this.segments[i-1].coordinateY;
-                    /**
-                     * Redessine une cellule de terrain à la précédente position du dernier segment.
-                     * Réinitialise également les données de cette cellule :
-                     * - isOccupied = false ;
-                     * - type = "ground" ;
-                     * - object = null
-                     */
-                    if (i === this.segments.length - 1) {
-                        this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
-                        this.terrain.WriteTerrainCell(this.segments[i].coordinateX / CELL_SIZE, this.segments[i].coordinateY / CELL_SIZE, false, "ground", null);
-                    }
-                    /**
-                     * Redessine un segment à sa nouvelle position (à savoir l'ancienne position de la cellule avant elle dans segments[]).
-                     * Redéfinit également les données de cette cellule :
-                     * - isOccupied = true ;
-                     * - type = "segment" ;
-                     * - object = this
-                     */
-                    this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
-                    this.terrain.WriteTerrainCell(newCoordinateX / CELL_SIZE, newCoordinateY / CELL_SIZE, true, "segment", this);
+        for (let i = this.segments.length - 1; i >= 0; i--) {
+            if (i === 0) {
+                /**
+                 * Permet de redessiner une cellule de terrain si la tête du serpent est son seul segment.
+                 */
+                if (this.segments.length === 1) {
+                    this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
                 }
+                /**
+                 * @type {Object} newPositionCellData
+                 * Objet contenant les données de la cellule de terrain où la tête va se déplacer.
+                 */
+                let newPositionCellData = this.terrain.ReadTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE);
+                /**
+                 * Si cette cellule est de type "sweetFruit", alors on effectue une série d'actions ;
+                 * Sinon, si cette cellule est de type "sourFruit", alors on effectue une autre série d'actions ;
+                 * Sinon, si cette cellule est de type "obstacleCell" ou de type "segment", alors on effectue une autre série d'actions.
+                 */
+                if (newPositionCellData.type === "sweetFruit") {
+                    this.AddSegment(newPositionCellData.object.segmentsToAdd);
+                    this.player.GainExp(newPositionCellData.object.experience);
+                    CreateRandomFood(this.context, this.terrain);
+                } else if (newPositionCellData.type === "sourFruit") {
+                    this.RemoveSegment(newPositionCellData.object.segmentsToRemove);
+                    this.player.GainExp(newPositionCellData.object.experience);
+                    CreateRandomFood(this.context, this.terrain);
+                } else if (newPositionCellData.type === "obstacleCell" || newPositionCellData.type === "segment") {
+                    StopRAF();
+                    this.player.SaveToLocalStorage();
+                }
+                /**
+                 * Redessine la tête du serpent à sa nouvelle position.
+                 * Redéfinit également les données de cette cellule :
+                 * - isOccupied = true ;
+                 * - type = "head" ;
+                 * - object = this
+                 */
+                this.segments[i].MoveSegment(newHeadCoordinateX, newHeadCoordinateY);
+                this.terrain.WriteTerrainCell(newHeadCoordinateX / CELL_SIZE, newHeadCoordinateY / CELL_SIZE, true, "head", this);
+            } else {
+                /**
+                 * Définit les coordonnées d'un n comme les coordonnées du segment n-1.
+                 * C'est-à-dire qu'un segment aura pour prochaine coordonnée les coordonnées du segment devant lui.
+                 */
+                let newCoordinateX = this.segments[i-1].coordinateX;
+                let newCoordinateY = this.segments[i-1].coordinateY;
+                /**
+                 * Redessine une cellule de terrain à la précédente position du dernier segment.
+                 * Réinitialise également les données de cette cellule :
+                 * - isOccupied = false ;
+                 * - type = "ground" ;
+                 * - object = null
+                 */
+                if (i === this.segments.length - 1) {
+                    this.terrain.DrawTerrainCell(this.segments[i].coordinateX, this.segments[i].coordinateY);
+                    this.terrain.WriteTerrainCell(this.segments[i].coordinateX / CELL_SIZE, this.segments[i].coordinateY / CELL_SIZE, false, "ground", null);
+                }
+                /**
+                 * Redessine un segment à sa nouvelle position (à savoir l'ancienne position de la cellule avant elle dans segments[]).
+                 * Redéfinit également les données de cette cellule :
+                 * - isOccupied = true ;
+                 * - type = "segment" ;
+                 * - object = this
+                 */
+                this.segments[i].MoveSegment(newCoordinateX, newCoordinateY);
+                this.terrain.WriteTerrainCell(newCoordinateX / CELL_SIZE, newCoordinateY / CELL_SIZE, true, "segment", this);
             }
         }
     }
