@@ -74,6 +74,7 @@ export class Snake {
     MoveSnakeSegments(newHeadCoordinateX, newHeadCoordinateY) {
         if (IsThereSegmentAt(this.segments, newHeadCoordinateX, newHeadCoordinateY)) {
             StopRAF();
+            this.player.SaveToLocalStorage();
         } else {
             for (let i = this.segments.length - 1; i >= 0; i--) {
                 if (i === 0) {
@@ -103,6 +104,7 @@ export class Snake {
                         CreateRandomFood(this.context, this.terrain);
                     } else if (newPositionCellData.type === "obstacleCell") {
                         StopRAF();
+                        this.player.SaveToLocalStorage();
                     }
                     /**
                      * Redessine la tête du serpent à sa nouvelle position.

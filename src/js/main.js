@@ -54,3 +54,5 @@ progressBarValue.id = "progressBarValue";
 progressBarValue.className = "progressBarValue";
 progressBar.appendChild(progressBarValue);
 aside.appendChild(progressBar);
+
+player.UpdateExperienceUI();

@@ -18,7 +18,30 @@ export class PlayerAccount {
          * Facteur d'accroissement du total de points d'expériences à obtenir avant de passer au niveau supérieur.
          */
         this.scalingFactor = 1.2;
+        /**
+         * Charge les données du joueur depuis LocalStorage.
+         */
+        if (localStorage.length > 0) {
+            this.LoadFromLocalStorage();
+            console.log(this.accountExp);
+        }
+        // localStorage.clear();
     }
+
+    LoadFromLocalStorage() {
+        this.username = localStorage.getItem("username");
+        this.accountLevel = parseInt(localStorage.getItem("accountLevel"));
+        this.accountExp = parseInt(localStorage.getItem("accountExp"));
+        this.accountExpThreshold = parseInt(localStorage.getItem("accountExpThreshold"));
+    }
+
+    SaveToLocalStorage() {
+        localStorage.setItem("username", this.username);
+        localStorage.setItem("accountLevel", this.accountLevel.toString());
+        localStorage.setItem("accountExp", this.accountExp.toString());
+        localStorage.setItem("accountExpThreshold", this.accountExpThreshold.toString());
+    }
+
     /**
      * Ajoute de l'expérience au compteur d'expérience du joueur.
      * Modifie les interfaces liées à l'affichage de l'expérience.
@@ -28,21 +51,12 @@ export class PlayerAccount {
         /**
          * Met à jour l'expérience et le niveau du joueur.
          */
+        // console.log(this.accountExp);
+        // console.log(expToGain);
         this.accountExp += expToGain;
         this.CheckLevelUp();
-        /**
-         * @type {number} xpPercentage
-         * Le pourcentage d'expérience par rapport à la somme d'expérience nécessaire à la montée de niveau.
-         */
-        const xpPercentage = (this.accountExp / this.accountExpThreshold) * 100;
-        /**
-         * @type {HTMLElement} levelTextualIndicator
-         * Un indicateur textuel du niveau. Il est mis à jour sous la forme "Niveau X - XXX/XXX Exp.".
-         */
-        const levelTextualIndicator = document.getElementById("levelTextualIndicator");
-        levelTextualIndicator.textContent = "Niveau " + this.accountLevel + " - " + this.accountExp + " / " + this.accountExpThreshold + " Exp.";
-        const progressBarValue = document.getElementById("progressBarValue");
-        progressBarValue.style.width = xpPercentage + "%";
+        this.UpdateExperienceUI();
+        // console.log(this.accountExp);
     }
 
     /**
@@ -57,5 +71,24 @@ export class PlayerAccount {
             this.accountLevel++;
             this.accountExpThreshold = Math.ceil(this.accountExpThreshold * this.scalingFactor);
         }
+    }
+
+    /**
+     * Met à jour les compteurs de points d'expériences de l'interface utilisateur.
+     */
+    UpdateExperienceUI() {
+        /**
+         * @type {number} xpPercentage
+         * Le pourcentage d'expérience par rapport à la somme d'expérience nécessaire à la montée de niveau.
+         */
+        const xpPercentage = (this.accountExp / this.accountExpThreshold) * 100;
+        /**
+         * @type {HTMLElement} levelTextualIndicator
+         * Un indicateur textuel du niveau. Il est mis à jour sous la forme "Niveau X - XXX/XXX Exp.".
+         */
+        const levelTextualIndicator = document.getElementById("levelTextualIndicator");
+        levelTextualIndicator.textContent = "Niveau " + this.accountLevel + " - " + this.accountExp + " / " + this.accountExpThreshold + " Exp.";
+        const progressBarValue = document.getElementById("progressBarValue");
+        progressBarValue.style.width = xpPercentage + "%";
     }
 }
