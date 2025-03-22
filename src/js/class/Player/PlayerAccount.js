@@ -23,9 +23,7 @@ export class PlayerAccount {
          */
         if (localStorage.length > 0) {
             this.LoadFromLocalStorage();
-            console.log(this.accountExp);
         }
-        // localStorage.clear();
     }
 
     LoadFromLocalStorage() {
@@ -51,12 +49,9 @@ export class PlayerAccount {
         /**
          * Met à jour l'expérience et le niveau du joueur.
          */
-        // console.log(this.accountExp);
-        // console.log(expToGain);
         this.accountExp += expToGain;
         this.CheckLevelUp();
         this.UpdateExperienceUI();
-        // console.log(this.accountExp);
     }
 
     /**

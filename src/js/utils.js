@@ -72,7 +72,6 @@ export function GetRandomCoordinates(terrainWidth, terrainHeight) {
 export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
     const coordinateX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
     const coordinateY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-    console.log(coordinateY);
     return {
         "coordinateX": coordinateX,
         "coordinateY": coordinateY
