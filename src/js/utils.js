@@ -5,7 +5,7 @@ import {
     Banana
 } from "./class/SweetFruit/Banana.js";
 import {Lemon} from "./class/SourFruit/Lemon.js";
-import {GreenLemon} from "./class/SourFruit/GreenLemon.js";
+import {Lime} from "./class/SourFruit/Lime.js";
 
 /**
  * Génère un entier pseudo-aléatoire.
@@ -85,7 +85,7 @@ export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
  * @returns {object}
  */
 export function CreateRandomFood(context, terrain) {
-    const FOODS = [Strawberry, Banana, Lemon, GreenLemon];
+    const FOODS = [Strawberry, Banana, Lemon, Lime];
     let randomIndex = GetRandomIndexFromArray(FOODS.length);
     const food = FOODS[randomIndex];
     return new food(context, terrain);

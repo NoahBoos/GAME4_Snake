@@ -6,17 +6,17 @@ export class SourFruit {
      * Le constructeur de la classe SourFruit.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
      * @param {Terrain} terrain - Instance de la classe Terrain.
-     * @param {string} color - Couleur du fruit acide.
+     * @param {string} texture - Lien vers la texture SVG du fruit.
      * @param {number} experience - Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      * @param {number} segmentsToRemove - Nombre de segments à retirer du serpent.
      * @constructor
      */
-    constructor(context, terrain, color, experience, segmentsToRemove) {
+    constructor(context, terrain, texture, experience, segmentsToRemove) {
         this.context = context;
         this.terrain = terrain;
         this.coordinateX = 0;
         this.coordinateY = 0;
-        this.color = color;
+        this.texture = texture;
         this.experience = experience;
         this.segmentsToRemove = segmentsToRemove;
     }
@@ -24,8 +24,11 @@ export class SourFruit {
      * Dessine un fruit dans le canvas. Chaque fruit a une dimension de 20 pixels * 20 pixels.
      */
     DrawFruit() {
-        this.context.fillStyle = this.color;
-        this.context.fillRect(this.coordinateX, this.coordinateY, CELL_SIZE, CELL_SIZE);
+        let textureToDraw = new Image();
+        textureToDraw.src = this.texture;
+        textureToDraw.onload = () => {
+            this.context.drawImage(textureToDraw, this.coordinateX - 5, this.coordinateY - 5, CELL_SIZE * 1.5, CELL_SIZE * 1.5);
+        }
     }
     /**
      * Écrit les données d'une cellule de nourriture en appelant WriteTerrainCell().

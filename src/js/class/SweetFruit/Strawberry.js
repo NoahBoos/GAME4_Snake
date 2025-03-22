@@ -6,8 +6,15 @@ export class Strawberry extends SweetFruit {
     /**
      * @type {string} color
      * Couleur du fruit
+     * @legacy
+     * Variable conservée à des fins de rétrocompatibilité - Ancienne Texture.
      */
     static color = "#FF0000";
+    /**
+     * @type {string} texture
+     * Lien relatif vers le svg de la texture du fruit.
+     */
+    static texture = "./svg/Strawberry.svg";
     /**
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
@@ -31,7 +38,7 @@ export class Strawberry extends SweetFruit {
         super(
             context,
             terrain,
-            Strawberry.color,
+            Strawberry.texture,
             Strawberry.experience,
             Strawberry.segmentsToAdd
         );

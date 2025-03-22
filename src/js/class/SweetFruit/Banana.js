@@ -6,8 +6,15 @@ export class Banana extends SweetFruit {
     /**
      * @type {string} color
      * Couleur du fruit
+     * @legacy
+     * Variable conservée à des fins de rétrocompatibilité - Ancienne Texture.
      */
     static color = "#FFE01B";
+    /**
+     * @type {string} texture
+     * Lien relatif vers le svg de la texture du fruit.
+     */
+    static texture = "./svg/Banana.svg";
     /**
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
@@ -31,7 +38,7 @@ export class Banana extends SweetFruit {
         super(
             context,
             terrain,
-            Banana.color,
+            Banana.texture,
             Banana.experience,
             Banana.segmentsToAdd
         );
