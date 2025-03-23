@@ -43,7 +43,7 @@ export class Snake {
          *  Attributs liés au corps du serpent (Tête et Array contenant les segments du serpent.)
          */
         this.head = new Segment(this.context, this.coordinateX, this.coordinateY, this.color);
-        this.segments = new Array;
+        this.segments = [];
         this.segments.push(this.head);
         this.segments[0].DrawSegment();
         /**
