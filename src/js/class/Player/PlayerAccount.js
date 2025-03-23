@@ -9,6 +9,7 @@ import {Blueberry} from "../SourFruit/Blueberry.js";
 import {Tangerine} from "../SourFruit/Tangerine.js";
 import {Melon} from "../SweetFruit/Melon.js";
 import {Banana} from "../SweetFruit/Banana.js";
+import {GreenApple} from "../SourFruit/GreenApple.js";
 
 export class PlayerAccount {
     /**
@@ -32,22 +33,21 @@ export class PlayerAccount {
          */
         this.scalingFactor = 1.2;
         /**
+         * @type {Array} - availableFruits
+         * Une array contenant les fruits disponibles pour le joueur.
+         */
+        this.availableFruits = [];
+        /**
          * Charge les données du joueur depuis LocalStorage.
          */
         if (localStorage.length > 0) {
             this.LoadFromLocalStorage();
+        } else {
+
         }
-        /**
-         * @type {Array} - availableFruits
-         * Une array contenant les fruits disponibles pour le joueur.
-         */
-        this.availableFruits = [
-            Strawberry
-        ];
         /**
          * Appel de méthodes.
          */
-        console.log(this.availableFruits);
         this.SetAvailableFruit();
     }
 
@@ -122,39 +122,48 @@ export class PlayerAccount {
      * Permet de mettre à jour les fruits disponibles pour le serpent à partir du niveau du joueur.
      */
     SetAvailableFruit() {
-        switch (true) {
-            case this.accountLevel >= 2:
-                this.availableFruits.push(Grape);
-                break;
-            case this.accountLevel >= 3:
-                this.availableFruits.push(Lemon);
-                break;
-            case this.accountLevel >= 5:
-                this.availableFruits.push(Peach);
-                break;
-            case this.accountLevel >= 7:
-                this.availableFruits.push(Blueberry);
-                break;
-            case this.accountLevel >= 10:
-                this.availableFruits.push(Mango);
-                break;
-            case this.accountLevel >= 12:
-                this.availableFruits.push(Tangerine);
-                break;
-            case this.accountLevel >= 14:
-                this.availableFruits.push(Melon);
-                break;
-            case this.accountLevel >= 15:
-                this.availableFruits.push(Lime);
-                break;
-            case this.accountLevel >= 17:
-                this.availableFruits.push(Banana);
-                break;
-            case this.accountLevel >= 20:
-                this.availableFruits.push(RedApple);
-                break;
-            case this.accountLevel >= 25:
-                break;
+        /**
+         * Niveaux de déblocages des fruits doux.
+         */
+        if (this.accountLevel >= 1) {
+            this.availableFruits.push(Strawberry);
+        }
+        if (this.accountLevel >= 4) {
+            this.availableFruits.push(Grape);
+        }
+        if (this.accountLevel >= 8) {
+            this.availableFruits.push(Peach);
+        }
+        if (this.accountLevel >= 16) {
+            this.availableFruits.push(Mango);
+        }
+        if (this.accountLevel >= 24) {
+            this.availableFruits.push(Melon);
+        }
+        if (this.accountLevel >= 32) {
+            this.availableFruits.push(Banana);
+        }
+        if (this.accountLevel >= 40) {
+            this.availableFruits.push(RedApple);
+        }
+
+        /**
+         * Niveaux de déblocages des fruits acides.
+         */
+        if (this.accountLevel >= 12) {
+            this.availableFruits.push(Lemon);
+        }
+        if (this.accountLevel >= 20) {
+            this.availableFruits.push(Blueberry);
+        }
+        if (this.accountLevel >= 28) {
+            this.availableFruits.push(Tangerine);
+        }
+        if (this.accountLevel >= 36) {
+            this.availableFruits.push(Lime);
+        }
+        if (this.accountLevel >= 44) {
+            this.availableFruits.push(GreenApple);
         }
     }
 }
