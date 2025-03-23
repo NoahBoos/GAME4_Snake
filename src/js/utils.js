@@ -6,6 +6,14 @@ import {
 } from "./class/SweetFruit/Banana.js";
 import {Lemon} from "./class/SourFruit/Lemon.js";
 import {Lime} from "./class/SourFruit/Lime.js";
+import {Grape} from "./class/SweetFruit/Grape.js";
+import {Peach} from "./class/SweetFruit/Peach.js";
+import {RedApple} from "./class/SweetFruit/RedApple.js";
+import {Blueberry} from "./class/SourFruit/Blueberry.js";
+import {GreenApple} from "./class/SourFruit/GreenApple.js";
+import {Mango} from "./class/SweetFruit/Mango.js";
+import {Melon} from "./class/SweetFruit/Melon.js";
+import {Tangerine} from "./class/SourFruit/Tangerine.js";
 
 /**
  * Génère un entier pseudo-aléatoire.
@@ -84,7 +92,10 @@ export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
  * @returns {object}
  */
 export function CreateRandomFood(context, terrain) {
-    const FOODS = [Strawberry, Banana, Lemon, Lime];
+    const FOODS = [
+        Strawberry, Grape, Peach, Mango, Melon, Banana, RedApple,
+        Lemon, Blueberry, Tangerine, Lime, GreenApple
+    ];
     let randomIndex = GetRandomIndexFromArray(FOODS.length);
     const food = FOODS[randomIndex];
     return new food(context, terrain);

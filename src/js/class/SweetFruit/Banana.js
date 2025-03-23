@@ -1,15 +1,6 @@
-import {
-    SweetFruit
-} from "./SweetFruit.js"
+import {SweetFruit} from "./SweetFruit.js"
 
 export class Banana extends SweetFruit {
-    /**
-     * @type {string} color
-     * Couleur du fruit
-     * @legacy
-     * Variable conservée à des fins de rétrocompatibilité - Ancienne Texture.
-     */
-    static color = "#FFE01B";
     /**
      * @type {string} texture
      * Lien relatif vers le svg de la texture du fruit.
@@ -19,12 +10,12 @@ export class Banana extends SweetFruit {
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 10;
+    static experience = 50;
     /**
      * @type {number} segmentsToAdd
      * Nombre de segments à ajouter au serpent.
      */
-    static segmentsToAdd = 2;
+    static segmentsToAdd = 6;
     /**
      * Le constructeur de la classe Banana.
      * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.

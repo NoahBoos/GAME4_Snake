@@ -1,15 +1,6 @@
-import {
-    SourFruit
-} from "./SourFruit.js";
+import {SourFruit} from "./SourFruit.js";
 
 export class Lemon extends SourFruit {
-    /**
-     * @type {string} color
-     * Couleur du fruit
-     * @legacy
-     * Variable conservée à des fins de rétrocompatibilité - Ancienne Texture.
-     */
-    static color = "#FFF700";
     /**
      * @type {string} texture
      * Lien relatif vers le svg de la texture du fruit.
@@ -19,7 +10,7 @@ export class Lemon extends SourFruit {
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 5;
+    static experience = 10;
     /**
      * @type {number} segmentsToRemove
      * Nombre de segments à retirer du serpent.

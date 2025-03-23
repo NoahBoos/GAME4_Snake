@@ -1,15 +1,6 @@
-import {
-    SweetFruit
-} from "./SweetFruit.js";
+import {SweetFruit} from "./SweetFruit.js";
 
 export class Strawberry extends SweetFruit {
-    /**
-     * @type {string} color
-     * Couleur du fruit
-     * @legacy
-     * Variable conservée à des fins de rétrocompatibilité - Ancienne Texture.
-     */
-    static color = "#FF0000";
     /**
      * @type {string} texture
      * Lien relatif vers le svg de la texture du fruit.
