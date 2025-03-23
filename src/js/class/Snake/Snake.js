@@ -93,11 +93,11 @@ export class Snake {
                 if (newPositionCellData.type === "sweetFruit") {
                     this.AddSegment(newPositionCellData.object.segmentsToAdd);
                     this.player.GainExp(newPositionCellData.object.experience);
-                    CreateRandomFood(this.context, this.terrain);
+                    CreateRandomFood(this.context, this.player, this.terrain);
                 } else if (newPositionCellData.type === "sourFruit") {
                     this.RemoveSegment(newPositionCellData.object.segmentsToRemove);
                     this.player.GainExp(newPositionCellData.object.experience);
-                    CreateRandomFood(this.context, this.terrain);
+                    CreateRandomFood(this.context, this.player, this.terrain);
                 } else if (newPositionCellData.type === "obstacleCell" || newPositionCellData.type === "segment") {
                     StopRAF();
                     this.player.SaveToLocalStorage();

@@ -1,3 +1,15 @@
+import {Strawberry} from "../SweetFruit/Strawberry.js";
+import {Grape} from "../SweetFruit/Grape.js";
+import {Lemon} from "../SourFruit/Lemon.js";
+import {Lime} from "../SourFruit/Lime.js";
+import {Mango} from "../SweetFruit/Mango.js";
+import {RedApple} from "../SweetFruit/RedApple.js";
+import {Peach} from "../SweetFruit/Peach.js";
+import {Blueberry} from "../SourFruit/Blueberry.js";
+import {Tangerine} from "../SourFruit/Tangerine.js";
+import {Melon} from "../SweetFruit/Melon.js";
+import {Banana} from "../SweetFruit/Banana.js";
+
 export class PlayerAccount {
     /**
      * Le constructeur de la classe Segment.
@@ -24,8 +36,23 @@ export class PlayerAccount {
         if (localStorage.length > 0) {
             this.LoadFromLocalStorage();
         }
+        /**
+         * @type {Array} - availableFruits
+         * Une array contenant les fruits disponibles pour le joueur.
+         */
+        this.availableFruits = [
+            Strawberry
+        ];
+        /**
+         * Appel de méthodes.
+         */
+        console.log(this.availableFruits);
+        this.SetAvailableFruit();
     }
 
+    /**
+     * Charge des données depuis l'API LocalStorage.
+     */
     LoadFromLocalStorage() {
         this.username = localStorage.getItem("username");
         this.accountLevel = parseInt(localStorage.getItem("accountLevel"));
@@ -33,6 +60,9 @@ export class PlayerAccount {
         this.accountExpThreshold = parseInt(localStorage.getItem("accountExpThreshold"));
     }
 
+    /**
+     * Sauvegarde des données dans l'API LocalStorage.
+     */
     SaveToLocalStorage() {
         localStorage.setItem("username", this.username);
         localStorage.setItem("accountLevel", this.accountLevel.toString());
@@ -85,5 +115,45 @@ export class PlayerAccount {
         levelTextualIndicator.textContent = "Niveau " + this.accountLevel + " - " + this.accountExp + " / " + this.accountExpThreshold + " Exp.";
         const progressBarValue = document.getElementById("progressBarValue");
         progressBarValue.style.width = xpPercentage + "%";
+    }
+
+    /**
+     * Permet de mettre à jour les fruits disponibles pour le serpent à partir du niveau du joueur.
+     */
+    SetAvailableFruit() {
+        switch (true) {
+            case this.accountLevel >= 2:
+                this.availableFruits.push(Grape);
+                break;
+            case this.accountLevel >= 3:
+                this.availableFruits.push(Lemon);
+                break;
+            case this.accountLevel >= 5:
+                this.availableFruits.push(Peach);
+                break;
+            case this.accountLevel >= 7:
+                this.availableFruits.push(Blueberry);
+                break;
+            case this.accountLevel >= 10:
+                this.availableFruits.push(Mango);
+                break;
+            case this.accountLevel >= 12:
+                this.availableFruits.push(Tangerine);
+                break;
+            case this.accountLevel >= 14:
+                this.availableFruits.push(Melon);
+                break;
+            case this.accountLevel >= 15:
+                this.availableFruits.push(Lime);
+                break;
+            case this.accountLevel >= 17:
+                this.availableFruits.push(Banana);
+                break;
+            case this.accountLevel >= 20:
+                this.availableFruits.push(RedApple);
+                break;
+            case this.accountLevel >= 25:
+                break;
+        }
     }
 }

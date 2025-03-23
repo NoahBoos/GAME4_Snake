@@ -88,15 +88,16 @@ export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
 /**
  * Crée une nouvelle nourriture sur le terrain.
  * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
+ * @param {PlayerAccount} player - Une instance du joueur.
  * @param {Terrain} terrain - Une instance du terrain.
  * @returns {object}
  */
-export function CreateRandomFood(context, terrain) {
-    const FOODS = [
-        Strawberry, Grape, Peach, Mango, Melon, Banana, RedApple,
-        Lemon, Blueberry, Tangerine, Lime, GreenApple
-    ];
-    let randomIndex = GetRandomIndexFromArray(FOODS.length);
-    const food = FOODS[randomIndex];
+export function CreateRandomFood(context, player, terrain) {
+    // const FOODS = [
+    //     Strawberry, Grape, Peach, Mango, Melon, Banana, RedApple,
+    //     Lemon, Blueberry, Tangerine, Lime, GreenApple
+    // ];
+    let randomIndex = GetRandomIndexFromArray(player.availableFruits.length);
+    const food = player.availableFruits[randomIndex];
     return new food(context, terrain);
 }
