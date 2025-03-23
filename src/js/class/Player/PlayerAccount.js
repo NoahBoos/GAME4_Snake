@@ -28,6 +28,7 @@ export class PlayerAccount {
         /**
          * @type {number} - scalingFactor
          * Facteur d'accroissement du total de points d'expériences à obtenir avant de passer au niveau supérieur.
+         * @legacy
          */
         this.scalingFactor = 1.2;
         /**
@@ -94,7 +95,7 @@ export class PlayerAccount {
         while (this.accountExp >= this.accountExpThreshold) {
             this.accountExp -= this.accountExpThreshold;
             this.accountLevel++;
-            this.accountExpThreshold = Math.ceil(this.accountExpThreshold * this.scalingFactor);
+            this.accountExpThreshold = Math.ceil(this.accountExpThreshold + 100);
         }
     }
 
