@@ -83,6 +83,7 @@ export class PlayerAccount {
         this.accountExp += expToGain;
         this.CheckLevelUp();
         this.UpdateExperienceUI();
+        this.SetAvailableFruit();
     }
 
     /**
