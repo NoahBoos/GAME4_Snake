@@ -17,7 +17,7 @@ export class Lime extends SourFruit {
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 75;
+    static experience = 160;
     /**
      * @type {number} segmentsToRemove
      * Nombre de segments à retirer du serpent.

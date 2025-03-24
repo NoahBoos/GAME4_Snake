@@ -10,7 +10,7 @@ export class Tangerine extends SourFruit {
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 50;
+    static experience = 120;
     /**
      * @type {number} segmentsToRemove
      * Nombre de segments à retirer du serpent.

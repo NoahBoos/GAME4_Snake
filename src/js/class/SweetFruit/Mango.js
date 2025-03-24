@@ -10,7 +10,7 @@ export class Mango extends SweetFruit {
      * @type {number} experience
      * Somme des points d'expériences que le joueur doit gagner s'il mange le fruit.
      */
-    static experience = 25;
+    static experience = 100;
     /**
      * @type {number} segmentsToAdd
      * Nombre de segments à ajouter au serpent.
