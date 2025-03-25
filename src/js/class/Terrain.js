@@ -4,6 +4,7 @@ import {
 import {
     GetRandomColor
 } from "../utils.js";
+import {ObstacleCell} from "./Obstacle/ObstacleCell.js";
 
 export class Terrain {
     /**
@@ -44,8 +45,8 @@ export class Terrain {
                 this.context.fillStyle = "#FFFFFF";
                 // Terrain désertique
                 this.context.fillStyle = "#fff89e";
-                this.context.fillRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
-                this.context.strokeRect(i * 20, j * 20, CELL_SIZE, CELL_SIZE);
+                this.context.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+                this.context.strokeRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
             }
         }
     }
