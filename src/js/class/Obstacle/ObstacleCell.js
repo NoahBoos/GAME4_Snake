@@ -69,13 +69,14 @@ export class ObstacleCell {
 
         do {
             newCoordinates = GetRandomCoordinatesWithConstraint(
-                3, TERRAIN.terrainWidth - 6,
-                4, TERRAIN.terrainHeight - 8
+                0, TERRAIN.terrainWidth - 4,
+                4, TERRAIN.terrainHeight - 6
             );
             terrainCellToCoordinates = TERRAIN.ReadTerrainCell(newCoordinates.coordinateX, newCoordinates.coordinateY);
         } while (terrainCellToCoordinates.isOccupied === true);
 
         this.coordinateX = newCoordinates.coordinateX * CELL_SIZE;
         this.coordinateY = newCoordinates.coordinateY * CELL_SIZE;
+        console.log(this.coordinateX, this.coordinateY);
     }
 }
