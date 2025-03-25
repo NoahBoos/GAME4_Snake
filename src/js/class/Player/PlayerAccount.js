@@ -42,8 +42,6 @@ export class PlayerAccount {
          */
         if (localStorage.length > 0) {
             this.LoadFromLocalStorage();
-        } else {
-
         }
         /**
          * Appel de méthodes.
