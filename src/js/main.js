@@ -6,7 +6,12 @@ import {Snake} from "./class/Snake/Snake.js";
 import {Strawberry} from "./class/SweetFruit/Strawberry.js";
 import {StartRAF} from "./requestAnimationFrame.js";
 import {PlayerAccount} from "./class/Player/PlayerAccount.js";
-import {GenerateObstacleBorder, GenerateTObstacle, GenerateUObstacle} from "./class/Obstacle/ObstacleTemplate.js";
+import {
+    GenerateObstacleBorder,
+    GenerateReversedUObstacle,
+    GenerateTObstacle,
+    GenerateUObstacle
+} from "./class/Obstacle/ObstacleTemplate.js";
 
 const player = new PlayerAccount("Rift");
 
@@ -22,6 +27,7 @@ snake.segments[0].DrawSegment();
 StartRAF(0, snake);
 
 GenerateObstacleBorder(context, terrain);
+GenerateReversedUObstacle(context, terrain);
 GenerateUObstacle(context, terrain);
 GenerateUObstacle(context, terrain);
 GenerateTObstacle(context, terrain);
