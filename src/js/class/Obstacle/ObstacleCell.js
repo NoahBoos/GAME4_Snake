@@ -9,7 +9,7 @@ export class ObstacleCell {
      * @param {number} coordinateX - Coordonnée X de la cellule.
      * @param {number} coordinateY - Coordonnée Y de la cellule.
      */
-    constructor(context, terrain, coordinateX = 0, coordinateY = 0) {
+    constructor(context, terrain, coordinateX = 0, coordinateY = 0, zeroAsCoordinates = false) {
         this.context = context;
         this.terrain = terrain;
         this.coordinateX = coordinateX;
@@ -19,7 +19,7 @@ export class ObstacleCell {
          * Écrit les données de la cellule où se trouve la cellule d'obstacle.
          * Dessine l'obstacle.
          */
-        if (this.coordinateX === 0 && this.coordinateY === 0) {
+        if (this.coordinateX === 0 && this.coordinateY === 0 && zeroAsCoordinates === false) {
             this.DefineCoordinates();
         }
         this.WriteObstacleCell();
