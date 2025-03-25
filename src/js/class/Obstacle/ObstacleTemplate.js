@@ -30,3 +30,15 @@ export function GenerateTObstacle(context, terrain) {
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 2), originObstacleCoordinateY + (CELL_SIZE * 3));
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 2), originObstacleCoordinateY + (CELL_SIZE * 4));
 }
+
+export function GenerateObstacleBorder(context, terrain) {
+    for (let i = 0; i < terrain.terrain.length; i++) {
+        for (let j = 0; j < terrain.terrain[i].length; j++) {
+            if (i === 0 || i === terrain.terrain[i].length - 1) {
+                new ObstacleCell(context, terrain, i * CELL_SIZE, j * CELL_SIZE, true);
+            } else if (i !== 0 && (j === 0 || j === terrain.terrain[i].length - 1)) {
+                new ObstacleCell(context, terrain, i * CELL_SIZE, j * CELL_SIZE);
+            }
+        }
+    }
+}
