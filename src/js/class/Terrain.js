@@ -63,9 +63,7 @@ export class Terrain {
         this.context.fillStyle = "#fff89e";
         this.context.fillRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
         this.context.strokeRect(coordinateX, coordinateY, CELL_SIZE, CELL_SIZE);
-        // À vérifier
-        // this.WriteTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE, false, "ground", null);
-        // console.log(this.ReadTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE));
+        this.WriteTerrainCell(coordinateX / CELL_SIZE, coordinateY / CELL_SIZE, false, "ground", null);
     }
     /**
      * Récupère les données d'une cellule.
