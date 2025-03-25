@@ -185,7 +185,7 @@ export class Snake {
      */
     AddSegment(segmentsToAdd) {
         for (let i = 0; i < segmentsToAdd; i++) {
-            const SEGMENT = new Segment(this.context, 6000, 6000);
+            const SEGMENT = new Segment(this.context, 600, 6000);
             this.segments.push(SEGMENT);
         }
     }
