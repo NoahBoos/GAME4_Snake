@@ -8,6 +8,7 @@ export class ObstacleCell {
      * @param {Terrain} terrain - Instance de la classe Terrain.
      * @param {number} coordinateX - Coordonnée X de la cellule.
      * @param {number} coordinateY - Coordonnée Y de la cellule.
+     * @param {boolean} zeroAsCoordinates - Définit si la cellule peut avoir des coordonnées par zéro, et conséquemment, si le roll de coordonnées doit être effectué, donc.
      */
     constructor(context, terrain, coordinateX = 0, coordinateY = 0, zeroAsCoordinates = false) {
         this.context = context;
