@@ -20,3 +20,8 @@ export let movementIndex = -1;
 export function MovementIndex(newMovementIndex) {
     movementIndex = newMovementIndex;
 }
+/**
+ * @type {*[]} obstaclesOrigin
+ * Permet de stocker les origines des obstacles générés sur le terrain.
+ */
+export let obstaclesOrigin = new Array;

@@ -12,6 +12,8 @@ import {
     GenerateTObstacle,
     GenerateUObstacle
 } from "./class/Obstacle/ObstacleTemplate.js";
+import {PlaceObstacleRandomly} from "./utils.js";
+import {obstaclesOrigin} from "./global.js";
 
 const player = new PlayerAccount("Rift");
 
@@ -27,10 +29,7 @@ snake.segments[0].DrawSegment();
 StartRAF(0, snake);
 
 GenerateObstacleBorder(context, terrain);
-GenerateReversedUObstacle(context, terrain);
-GenerateUObstacle(context, terrain);
-GenerateUObstacle(context, terrain);
-GenerateTObstacle(context, terrain);
+PlaceObstacleRandomly(context, terrain);
 const strawberry = new Strawberry(context, terrain);
 
 // ASIDE HTML ELEMENTS

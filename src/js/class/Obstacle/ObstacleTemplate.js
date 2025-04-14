@@ -3,8 +3,7 @@ import {
 } from "./ObstacleCell.js";
 import {CELL_SIZE} from "../../global.js";
 
-export function GenerateUObstacle(context, terrain) {
-    const originObstacle = new ObstacleCell(context, terrain);
+export function GenerateUObstacle(context, terrain, originObstacle) {
     const originObstacleCoordinateX = originObstacle.coordinateX;
     const originObstacleCoordinateY = originObstacle.coordinateY;
     new ObstacleCell(context, terrain, originObstacleCoordinateX, originObstacleCoordinateY + CELL_SIZE);
@@ -13,12 +12,11 @@ export function GenerateUObstacle(context, terrain) {
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 2), originObstacleCoordinateY + (CELL_SIZE * 2));
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 3), originObstacleCoordinateY + (CELL_SIZE * 2));
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 4), originObstacleCoordinateY + (CELL_SIZE * 2));
-    new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 4), originObstacleCoordinateY + (CELL_SIZE * 1));
+    new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 4), originObstacleCoordinateY + CELL_SIZE);
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 4), originObstacleCoordinateY);
 }
 
-export function GenerateReversedUObstacle(context, terrain) {
-    const originObstacle = new ObstacleCell(context, terrain);
+export function GenerateReversedUObstacle(context, terrain, originObstacle) {
     const originObstacleCoordinateX = originObstacle.coordinateX;
     const originObstacleCoordinateY = originObstacle.coordinateY;
     new ObstacleCell(context, terrain, originObstacleCoordinateX + CELL_SIZE, originObstacleCoordinateY);
@@ -31,8 +29,7 @@ export function GenerateReversedUObstacle(context, terrain) {
     new ObstacleCell(context, terrain, originObstacleCoordinateX + (CELL_SIZE * 4), originObstacleCoordinateY + (CELL_SIZE * 2));
 }
 
-export function GenerateTObstacle(context, terrain) {
-    const originObstacle = new ObstacleCell(context, terrain);
+export function GenerateTObstacle(context, terrain, originObstacle) {
     const originObstacleCoordinateX = originObstacle.coordinateX;
     const originObstacleCoordinateY = originObstacle.coordinateY;
     new ObstacleCell(context, terrain, originObstacleCoordinateX + CELL_SIZE, originObstacleCoordinateY);
