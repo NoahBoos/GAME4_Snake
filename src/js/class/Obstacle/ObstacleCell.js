@@ -10,7 +10,7 @@ export class ObstacleCell {
      * @param {number} coordinateY - Coordonnée Y de la cellule.
      * @param {boolean} zeroAsCoordinates - Définit si la cellule peut avoir des coordonnées par zéro, et conséquemment, si le roll de coordonnées doit être effectué, donc.
      */
-    constructor(context, terrain, coordinateX = 0, coordinateY = 0, zeroAsCoordinates = false) {
+    constructor(context, terrain, coordinateX = 0, coordinateY = 0, zeroAsCoordinates = false, writeAndDraw = true) {
         this.context = context;
         this.terrain = terrain;
         this.coordinateX = coordinateX;
@@ -23,15 +23,16 @@ export class ObstacleCell {
         if (this.coordinateX === 0 && this.coordinateY === 0 && zeroAsCoordinates === false) {
             this.DefineCoordinates();
         }
-        this.WriteObstacleCell();
-        this.DrawObstacleCell();
+        if (writeAndDraw === true) {
+            this.WriteObstacleCell();
+            this.DrawObstacleCell();
+        }
     }
     /**
-     * Définit les coordonnées de la cellule d'obstacle.
      * Écrit les données de la cellule où se trouve la cellule d'obstacle.
      * Dessine l'obstacle.
      */
-    InitializeObstacleCell(){
+    WriteAndDrawObstacleCell(){
         this.DefineCoordinates();
         this.WriteObstacleCell();
         this.DrawObstacleCell();
@@ -78,6 +79,5 @@ export class ObstacleCell {
 
         this.coordinateX = newCoordinates.coordinateX * CELL_SIZE;
         this.coordinateY = newCoordinates.coordinateY * CELL_SIZE;
-        console.log(this.coordinateX, this.coordinateY);
     }
 }
