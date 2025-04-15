@@ -11,9 +11,10 @@ import {
     GenerateReversedUObstacle,
     GenerateTObstacle,
     GenerateUObstacle
-} from "./class/Obstacle/ObstacleTemplate.js";
-import {CreateRandomFood, PlaceObstacleRandomly} from "./utils.js";
+} from "./class/Obstacle/ObstaclePattern.js";
+import {CreateRandomFood} from "./utils.js";
 import {obstaclesOrigin} from "./global.js";
+import {PlaceObstacleRandomly} from "./class/Obstacle/ObstacleUtils.js";
 
 const player = new PlayerAccount("Rift");
 
@@ -32,7 +33,6 @@ GenerateObstacleBorder(context, terrain);
 PlaceObstacleRandomly(context, terrain);
 CreateRandomFood(context, player, terrain);
 CreateRandomFood(context, player, terrain);
-const strawberry = new Strawberry(context, terrain);
 
 // ASIDE HTML ELEMENTS
 
