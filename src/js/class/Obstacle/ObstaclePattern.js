@@ -22,18 +22,27 @@ const T_OBSTACLE_PATTERN = [
 export function GenerateUObstacle(context, terrain, originObstacle) {
     if (CanPlacePattern(terrain, originObstacle, U_OBSTACLE_PATTERN)) {
         GenerateObstacleFromPattern(context, terrain, originObstacle, U_OBSTACLE_PATTERN);
+    } else {
+        console.log(originObstacle);
+        terrain.DrawTerrainCell(originObstacle.coordinateX, originObstacle.coordinateY);
     }
 }
 
 export function GenerateReversedUObstacle(context, terrain, originObstacle) {
     if (CanPlacePattern(terrain, originObstacle, REVERSED_U_OBSTACLE_PATTERN)) {
         GenerateObstacleFromPattern(context, terrain, originObstacle, REVERSED_U_OBSTACLE_PATTERN);
+    } else {
+        console.log(originObstacle);
+        terrain.DrawTerrainCell(originObstacle.coordinateX, originObstacle.coordinateY);
     }
 }
 
 export function GenerateTObstacle(context, terrain, originObstacle) {
     if (CanPlacePattern(terrain, originObstacle, T_OBSTACLE_PATTERN)) {
         GenerateObstacleFromPattern(context, terrain, originObstacle, T_OBSTACLE_PATTERN);
+    } else {
+        console.log(originObstacle);
+        terrain.DrawTerrainCell(originObstacle.coordinateX, originObstacle.coordinateY);
     }
 }
 
