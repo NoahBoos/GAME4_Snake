@@ -33,6 +33,7 @@ GenerateObstacleBorder(context, terrain);
 PlaceObstacleRandomly(context, terrain);
 CreateRandomFood(context, player, terrain);
 CreateRandomFood(context, player, terrain);
+CreateRandomFood(context, player, terrain);
 
 // ASIDE HTML ELEMENTS
 
