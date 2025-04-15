@@ -47,6 +47,7 @@ export class PlayerAccount {
          * Appel de méthodes.
          */
         this.SetAvailableFruit();
+        console.log(this.availableFruits)
     }
 
     /**
@@ -81,7 +82,6 @@ export class PlayerAccount {
         this.accountExp += expToGain;
         this.CheckLevelUp();
         this.UpdateExperienceUI();
-        this.SetAvailableFruit();
     }
 
     /**
@@ -125,44 +125,44 @@ export class PlayerAccount {
          * Niveaux de déblocages des fruits doux.
          */
         if (this.accountLevel >= 1) {
-            this.availableFruits.push(Strawberry);
+            this.availableFruits.push({food: Strawberry, weight: 1000});
         }
         if (this.accountLevel >= 4) {
-            this.availableFruits.push(Grape);
+            this.availableFruits.push({food: Grape, weight: 800});
         }
         if (this.accountLevel >= 8) {
-            this.availableFruits.push(Peach);
+            this.availableFruits.push({food: Peach, weight: 600});
         }
         if (this.accountLevel >= 16) {
-            this.availableFruits.push(Mango);
+            this.availableFruits.push({food: Mango, weight: 400});
         }
         if (this.accountLevel >= 24) {
-            this.availableFruits.push(Melon);
+            this.availableFruits.push({food: Melon, weight: 300});
         }
         if (this.accountLevel >= 32) {
-            this.availableFruits.push(Banana);
+            this.availableFruits.push({food: Banana, weight: 100});
         }
         if (this.accountLevel >= 40) {
-            this.availableFruits.push(RedApple);
+            this.availableFruits.push({food: RedApple, weight: 50});
         }
 
         /**
          * Niveaux de déblocages des fruits acides.
          */
         if (this.accountLevel >= 12) {
-            this.availableFruits.push(Lemon);
+            this.availableFruits.push({food: Lemon, weight: 750});
         }
         if (this.accountLevel >= 20) {
-            this.availableFruits.push(Blueberry);
+            this.availableFruits.push({food: Blueberry, weight: 500});
         }
         if (this.accountLevel >= 28) {
-            this.availableFruits.push(Tangerine);
+            this.availableFruits.push({food: Tangerine, weight: 250});
         }
         if (this.accountLevel >= 36) {
-            this.availableFruits.push(Lime);
+            this.availableFruits.push({food: Lime, weight: 150});
         }
         if (this.accountLevel >= 44) {
-            this.availableFruits.push(GreenApple);
+            this.availableFruits.push({food: GreenApple, weight: 25});
         }
     }
 }

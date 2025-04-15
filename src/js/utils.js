@@ -89,20 +89,22 @@ export function GetRandomCoordinatesWithConstraint(minX, maxX, minY, maxY) {
     };
 }
 /**
- * Crée une nouvelle nourriture sur le terrain.
+ * Crée une nouvelle nourriture sur le terrain grâce à un système de probabilités pondérées.
  * @param {CanvasRenderingContext2D} context - Contexte utilisé pour interagir sur le canvas.
  * @param {PlayerAccount} player - Une instance du joueur.
  * @param {Terrain} terrain - Une instance du terrain.
  * @returns {object}
  */
 export function CreateRandomFood(context, player, terrain) {
-    // const FOODS = [
-    //     Strawberry, Grape, Peach, Mango, Melon, Banana, RedApple,
-    //     Lemon, Blueberry, Tangerine, Lime, GreenApple
-    // ];
-    let randomIndex = GetRandomIndexFromArray(player.availableFruits.length);
-    const food = player.availableFruits[randomIndex];
-    return new food(context, terrain);
+    const totalWeight = player.availableFruits.reduce((acc, fruit) => acc + fruit.weight, 0);
+    let randomIndex = GetRandomInt(totalWeight);
+    console.log(randomIndex);
+    for (const fruit of player.availableFruits) {
+        if (randomIndex < fruit.weight) {
+            return new fruit["food"](context, terrain);
+        }
+        randomIndex -= fruit.weight;
+    }
 }
 /**
  * Permet de vérifier si une origine à générer possède une distance suffisante aux autres origines déjà générées.
