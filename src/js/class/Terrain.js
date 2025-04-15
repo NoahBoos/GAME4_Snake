@@ -30,7 +30,7 @@ export class Terrain {
         for (let i = 0; i < this.terrain.length; i++) {
             this.terrain[i] = new Array(this.terrainHeight);
             for (let j = 0; j < this.terrain[i].length; j++) {
-                this.WriteTerrainCell([i], [j], false, "ground");
+                this.WriteTerrainCell([i], [j], false, "ground", null);
             }
         }
     }
@@ -72,6 +72,12 @@ export class Terrain {
      * @returns {*} - Les données récupérées d'une cellule.
      */
     ReadTerrainCell(coordinateX, coordinateY) {
+        if (coordinateX === 35) {
+            coordinateX = 34;
+        }
+        if (coordinateY === 35) {
+            coordinateY = 34;
+        }
         return this.terrain[coordinateX][coordinateY];
     }
     /**
@@ -83,6 +89,7 @@ export class Terrain {
      * @param object
      */
     WriteTerrainCell(coordinateX, coordinateY, isOccupied, type, object) {
+        // console.log(this.terrain.length, this.terrain[coordinateX].length);
         this.terrain[coordinateX][coordinateY] = {
             "isOccupied": isOccupied,
             "type": type,

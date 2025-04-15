@@ -53,7 +53,7 @@ export class SourFruit {
          * @type {object} terrainCellToCoordinates
          * Entrepose les données d'une cellule d'une certaine position sous la forme d'un objet.
          */
-        let terrainCellToCoordinates;
+        let terrainCellToCoordinates = this.terrain.ReadTerrainCell(0, 0);
 
         do {
             newCoordinates = GetRandomCoordinates(
