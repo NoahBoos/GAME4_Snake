@@ -5,18 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GAME4 - Snake</title>
-    <script type="module" crossorigin src="./assets/index-Br9DUaGr.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DN16A-Ik.css">
+    <script type="module" crossorigin src="/GAME4_Snake/assets/index-CgqkL7XG.js"></script>
+    <link rel="stylesheet" crossorigin href="/GAME4_Snake/assets/index-DNy4m718.css">
   </head>
   <body>
     <div id="app">
       <h1>GAME4 - Snake</h1>
-      <div class="container">
+      <div class="container--flex-row container--space-between">
         <div id="container__aside">
         </div>
-        <canvas class="snake" id="canvas" width="700px" height="700px"></canvas>
+        <div class="container--flex-column container--gap">
+          <button id="button__reload">
+            Recharger une partie
+          </button>
+          <canvas class="snake" id="canvas" width="700px" height="700px"></canvas>
+        </div>
       </div>
-    </div>
-
+    </div>
   </body>
 </html>
