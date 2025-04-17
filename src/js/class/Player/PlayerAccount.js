@@ -18,7 +18,11 @@ export class PlayerAccount {
      * @constructor
      */
     constructor(username) {
-        this.username = username;
+        if (localStorage.length <= 0) {
+            this.username = prompt("Quel est votre pseudo ?");
+        } else {
+            this.username = username;
+        }
         this.accountLevel = 1;
         this.accountExp = 0;
         /**
