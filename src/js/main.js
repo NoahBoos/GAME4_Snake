@@ -4,7 +4,7 @@ import '../css/game.css';
 import {Terrain} from "./class/Terrain.js";
 import {Snake} from "./class/Snake/Snake.js";
 import {Strawberry} from "./class/SweetFruit/Strawberry.js";
-import {StartRAF} from "./requestAnimationFrame.js";
+import {StartRAF, StopRAF} from "./requestAnimationFrame.js";
 import {PlayerAccount} from "./class/Player/PlayerAccount.js";
 import {
     GenerateObstacleBorder,
@@ -12,8 +12,8 @@ import {
     GenerateTObstacle,
     GenerateUObstacle
 } from "./class/Obstacle/ObstaclePattern.js";
-import {CreateRandomFood} from "./utils.js";
-import {obstaclesOrigin} from "./global.js";
+import {CreateRandomFood, GetRandomCoordinatesWithConstraint} from "./utils.js";
+import {CELL_SIZE, obstaclesOrigin} from "./global.js";
 import {PlaceObstacleRandomly} from "./class/Obstacle/ObstacleUtils.js";
 
 const player = new PlayerAccount("Rift");
@@ -21,10 +21,10 @@ const player = new PlayerAccount("Rift");
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const terrain = new Terrain(context, 35, 35);
+let terrain = new Terrain(context, 35, 35);
 terrain.DrawTerrain();
 
-const snake = new Snake(document, context, player, terrain, 40, 100);
+let snake = new Snake(document, context, player, terrain, 80, 100);
 snake.segments[0].DrawSegment();
 
 StartRAF(0, snake);
@@ -34,6 +34,29 @@ PlaceObstacleRandomly(context, terrain);
 CreateRandomFood(context, player, terrain);
 CreateRandomFood(context, player, terrain);
 CreateRandomFood(context, player, terrain);
+
+// Reload button
+
+const reloadButton = document.getElementById('button__reload');
+
+reloadButton.addEventListener('click', (e) => {
+    StopRAF(context, terrain);
+    terrain = null;
+    terrain = new Terrain(context, 35, 35);
+    terrain.DrawTerrain();
+
+    snake = null;
+    snake = new Snake(document, context, player, terrain, 80, 100);
+    snake.segments[0].DrawSegment();
+
+    StartRAF(0, snake);
+
+    PlaceObstacleRandomly(context, terrain);
+    GenerateObstacleBorder(context, terrain);
+    CreateRandomFood(context, player, terrain);
+    CreateRandomFood(context, player, terrain);
+    CreateRandomFood(context, player, terrain);
+})
 
 // ASIDE HTML ELEMENTS
 

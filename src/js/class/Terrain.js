@@ -30,7 +30,7 @@ export class Terrain {
         for (let i = 0; i < this.terrain.length; i++) {
             this.terrain[i] = new Array(this.terrainHeight);
             for (let j = 0; j < this.terrain[i].length; j++) {
-                this.WriteTerrainCell([i], [j], false, "ground", null);
+                this.WriteTerrainCell(i, j, false, "ground", null);
             }
         }
     }

@@ -1,7 +1,19 @@
-.container {
+.container--flex-row {
     display: flex;
     flex-direction: row;
+}
+
+.container--flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.container--space-between {
     justify-content: space-between;
+}
+
+.container--gap {
+    gap: 16px;
 }
 
 .container__aside {

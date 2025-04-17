@@ -106,11 +106,16 @@ export function PlaceObstacleRandomly(context, terrain) {
     let attempt = 0;
     let maxAttempt = 150;
 
+    for (let i = 0; i < obstaclesOrigin.length; i++) {
+        obstaclesOrigin.splice(obstaclesOrigin.indexOf(obstaclesOrigin[i]), 1);
+    }
+
     while (attempt < maxAttempt) {
         const originObstacle = new ObstacleCell(context, terrain, 0, 0, false, false);
         const originObstacleCoordinate = [originObstacle.coordinateX, originObstacle.coordinateY];
         if (isFarEnough(originObstacleCoordinate)) {
             obstaclesOrigin.push(originObstacleCoordinate);
+            console.log(obstaclesOrigin);
             originObstacle.WriteAndDrawObstacleCell();
             ChooseObstacleTemplate(context, terrain, originObstacle);
         }
