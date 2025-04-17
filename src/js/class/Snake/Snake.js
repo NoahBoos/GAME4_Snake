@@ -100,6 +100,7 @@ export class Snake {
                     CreateRandomFood(this.context, this.player, this.terrain);
                 } else if (newPositionCellData.type === "obstacleCell" || newPositionCellData.type === "segment") {
                     StopRAF();
+                    alert("Dommage, tu as perdu ! Maintenant, tu dois recommencer depuis le début... ;>");
                     this.player.SaveToLocalStorage();
                 }
                 /**
